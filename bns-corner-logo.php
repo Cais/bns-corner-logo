@@ -113,7 +113,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                 /** Widget settings */
                 $widget_ops = array( 'classname' => 'bns-corner-logo', 'description' => __( 'Widget to display a logo; or, used as a plugin displays image fixed in one of the four corners.', 'bns-cl' ) );
                 /** Widget control settings */
-                $control_ops = array( 'width' => 200, 'height' => 350, 'id_base' => 'bns-corner-logo' );
+                $control_ops = array( 'width' => 200, 'id_base' => 'bns-corner-logo' );
                 /** Create the widget */
                 $this->WP_Widget( 'bns-corner-logo', 'BNS Corner Logo', $widget_ops, $control_ops );
         }
@@ -131,24 +131,25 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                 $widget_plugin	= $instance['widget_plugin'];
                 $logo_location	= $instance['logo_location'];
 
-                if ( !$widget_plugin ) {
+                if ( ! $widget_plugin ) {
                     /** @var $before_widget string - define by theme */
                     echo $before_widget;
 
                     /* Title of widget (before and after defined by themes). */
-                    if ( $title )
+                    if ( $title ) {
                         /**
                          * @var $before_title   string - defined by theme
                          * @var $after_title    string - defined by theme
                          */
                         echo $before_title . $title . $after_title;
+                    }
 
                     /** Display image based on widget settings */ ?>
                     <div class="bns-logo">
                         <a <?php if ( $new_window ) echo 'target="_blank"'; ?> href="<?php echo $image_link; ?>">
                             <!-- Use FIRST Admin gravatar -->
-                            <?php if ($use_gravatar) {
-                                echo get_avatar(get_bloginfo('admin_email'), $gravatar_size);
+                            <?php if ( $use_gravatar ) {
+                                echo get_avatar( get_bloginfo( 'admin_email' ), $gravatar_size);
                             } else { ?>
                                 <img style="" alt="<?php echo $image_alt_text; ?>" src="<?php echo $image_url;?>" />
                             <?php } ?>
@@ -164,11 +165,11 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                     } elseif ( $logo_location == "Top-Left" ) {
                         $logo_position = "top:0; left:0;";
                     } ?>
-                    <div class="bns-logo" style="position:fixed; <?php echo $logo_position; ?> z-index:5;">
+                    <div class="bns-logo" style="position:fixed; <?php echo $logo_position; ?>">
                         <a <?php if ( $new_window ) echo 'target="_blank"'; ?> href="<?php echo $image_link; ?>">
                             <!-- Use FIRST Admin gravatar -->
-                            <?php if ($use_gravatar) {
-                                echo get_avatar(get_bloginfo('admin_email'), $gravatar_size);
+                            <?php if ( $use_gravatar ) {
+                                echo get_avatar( get_bloginfo( 'admin_email' ), $gravatar_size);
                             } else { ?>
                                 <img style="" alt="<?php echo $image_alt_text; ?>" src="<?php echo $image_url;?>" />
                             <?php } ?>
@@ -211,21 +212,21 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                                    'widget_plugin'  => false,
                                    'logo_location'  => 'Bottom-Right'
                 );
-                $instance = wp_parse_args( (array) $instance, $defaults ); ?>
+                $instance = wp_parse_args( ( array ) $instance, $defaults ); ?>
                 <p>
                     <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bns-cl' ); ?></label>
                     <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
                 </p>
 
                 <p>
-                    <input class="checkbox" type="checkbox" <?php checked( (bool) $instance['use_gravatar'], true ); ?> id="<?php echo $this->get_field_id( 'use_gravatar' ); ?>" name="<?php echo $this->get_field_name( 'use_gravatar' ); ?>" />
+                    <input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['use_gravatar'], true ); ?> id="<?php echo $this->get_field_id( 'use_gravatar' ); ?>" name="<?php echo $this->get_field_name( 'use_gravatar' ); ?>" />
                     <label for="<?php echo $this->get_field_id( 'use_gravatar' ); ?>"><?php printf( __( 'Use your %1$s image?', 'bns-cl' ), '<a href="http://gravatar.com">Gravatar</a>' ); ?></label>
                 </p>
 
                 <p>
                     <label for="<?php echo $this->get_field_id( 'gravatar_size' ); ?>"><?php _e( 'Gravatar size in pixels:', 'bns-cl' ); ?></label>
                     <input class="widefat" id="<?php echo $this->get_field_id( 'gravatar_size' ); ?>" name="<?php echo $this->get_field_name( 'gravatar_size' ); ?>" value="<?php echo $instance['gravatar_size']; ?>" style="width:100%;" />
-                    <em><?php _e( 'NB: The Gravatar used is set as the first administrator by user ID.', 'bns-cl'); ?></em>
+                    <em><?php _e( 'NB: The Gravatar used is set as the first administrator by user ID.', 'bns-cl' ); ?></em>
                 </p>
 
                 <p>
@@ -244,14 +245,14 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                 </p>
 
                 <p>
-                    <input class="checkbox" type="checkbox" <?php checked( (bool) $instance['new_window'], true ); ?> id="<?php echo $this->get_field_id( 'new-window' ); ?>" name="<?php echo $this->get_field_name( 'new_window' ); ?>" />
+                    <input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['new_window'], true ); ?> id="<?php echo $this->get_field_id( 'new-window' ); ?>" name="<?php echo $this->get_field_name( 'new_window' ); ?>" />
                     <label for="<?php echo $this->get_field_id( 'new_window' ); ?>"><?php _e( 'Open "URL to follow" in new window?', 'bns-cl' ); ?></label>
                 </p>
 
                 <hr /> <!-- Separates functionality: Widget above - plugin below -->
 
                 <p>
-                    <input class="checkbox" type="checkbox" <?php checked( (bool) $instance['widget_plugin'], true ); ?> id="<?php echo $this->get_field_id( 'widget_plugin' ); ?>" name="<?php echo $this->get_field_name( 'widget_plugin' ); ?>" />
+                    <input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['widget_plugin'], true ); ?> id="<?php echo $this->get_field_id( 'widget_plugin' ); ?>" name="<?php echo $this->get_field_name( 'widget_plugin' ); ?>" />
                     <label for="<?php echo $this->get_field_id( 'widget_plugin' ); ?>"><?php _e( 'Use like a Plugin?', 'bns-cl' ); ?></label>
                 </p>
 

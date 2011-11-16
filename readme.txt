@@ -89,6 +89,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * added phpDoc Style documentation
 * added i18n support
 * added conditional enqueue of `bns-corner-logo-custom-style.css` stylesheet
+* removed inline `z-index` reference; see `bns-corner-logo` stylesheet for value
 
 = 1.5 =
 * released June 2011
