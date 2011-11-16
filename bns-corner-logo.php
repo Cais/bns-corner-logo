@@ -3,14 +3,14 @@
 Plugin Name: BNS Corner Logo
 Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
 Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
-Version: 1.6
+Version: 1.5
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
 License: GPL2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
-/* Last Updated: July 21, 2011 v1.6 */
+/* Last Updated: June 4, 2011 v1.5 */
 
 /*  Copyright 2009-2011  Edward Caissie  (email : edward.caissie@gmail.com)
 
@@ -81,8 +81,6 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 		$new_window     = $instance['new_window'];
 		$widget_plugin	= $instance['widget_plugin'];		
 		$logo_location	= $instance['logo_location'];
-		$custom_x       = $instance['custom_x'];
-		$custom_y       = $instance['custom_y'];
 		
 		if ( !$widget_plugin ) {
 		
@@ -114,8 +112,6 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 				$logo_position = "top:0; right:0;";
 			} elseif ( $logo_location == "Top-Left" ) {
 				$logo_position = "top:0; left:0;"; 
-			} elseif ( $logo_location == "Custom" ) {
-			  $logo_position = "top:$custom_y; left:$custom_x;";
 			}
 			?>
 			<div class="bns-logo" style="position:fixed; <?php echo $logo_position; ?> z-index:5;">
@@ -149,8 +145,6 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 		$instance['new_window']     = $new_instance['new_window'];
 		$instance['widget_plugin']	= $new_instance['widget_plugin'];    
 		$instance['logo_location']	= $new_instance['logo_location'];
-    $instance['custom_x']       = $new_instance['custom_x'];
-    $instance['custom_y']       = $new_instance['custom_y'];		
 		return $instance;
 	}
 
@@ -165,9 +159,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 				'image_link'      => '',
 				'new_window'      => false,
 				'widget_plugin'		=> false,      
-				'logo_location'		=> 'Bottom-Right',
-				'custom_x'        => '50%',
-				'custom_y'        => '50%'				
+				'logo_location'		=> 'Bottom-Right'
 			);
 		$instance = wp_parse_args( (array) $instance, $defaults );
 		?>
@@ -222,14 +214,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 				<option <?php selected( 'Bottom-Left', $instance['logo_location'], true ); ?>>Bottom-Left</option>
 				<option <?php selected( 'Top-Right', $instance['logo_location'], true ); ?>>Top-Right</option>
 				<option <?php selected( 'Top-Left', $instance['logo_location'], true ); ?>>Top-Left</option>
-				<option <?php selected( 'Custom', $instance['logo_location'], true ); ?>>Custom</option>
 			</select>
-      <hr />
-      <p>Custom position. Include type measure (px or em); or use percentage (%). </p>
-			<label for="<?php echo $this->get_field_id( 'custom_x' ); ?>"><?php _e('x-axis:'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'custom_x' ); ?>" name="<?php echo $this->get_field_name( 'custom_x' ); ?>" value="<?php echo $instance['custom_x']; ?>" />
-			<label for="<?php echo $this->get_field_id( 'custom_y' ); ?>"><?php _e('y-axis:'); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'custom_y' ); ?>" name="<?php echo $this->get_field_name( 'custom_y' ); ?>" value="<?php echo $instance['custom_y']; ?>" />
 		</p>
 
 		<?php

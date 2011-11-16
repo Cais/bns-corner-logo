@@ -3,7 +3,7 @@ Contributors: cais
 Donate link: http://buynowshop.com/
 Tags: image, logo, multiple widgets, gravatar, multisite compatible
 Requires at least: 3.0
-Tested up to: 3.2.1
+Tested up to: 3.2
 Stable tag: 1.5
 
 Widget to display a logo; or, used as a plugin displays image fixed in one of the four corners.
@@ -83,10 +83,6 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
-= 1.6 =
-* released ...
-* added (beta) Custom positioning option in "Use like a Plugin" section
-
 = 1.5 =
 * released June 2011
 * confirmed compatible with WordPress version 3.2-beta2-18085
