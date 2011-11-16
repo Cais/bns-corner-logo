@@ -39,7 +39,7 @@ This section describes how to install the plugin and get it working.
 
 * To use like a "fixed position" plugin:
 1. Use the checkbox beside "Use like a Plugin?"
-2. Choose the corner of the display from the dropdown box.
+2. Choose the corner of the display from the drop-down box.
 3. Click "Save"
 
 Read this article for further assistance: http://wpfirstaid.com/2009/12/plugin-installation/
@@ -83,19 +83,23 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= 1.6 =
+* released ...
+* confirmed compatible with WordPress 3.3
+
 = 1.5 =
 * released June 2011
 * confirmed compatible with WordPress version 3.2-beta2-18085
-* enqueued styelsheet
+* enqueue stylesheet
 * updated 'option' code to use `selected()`
-* cleaned up and resized the widget options display
+* cleaned up and re-sized the widget options display
 * updated the option panel screenshot to show the new size
 
 = 1.4 =
 * released February 6, 2011
 * correct version requirement message
 * added option to open "URL to follow" in new page
-* moved common inline styles to plugin's stylesheet
+* moved common inline styles to plugin stylesheet
 
 = 1.3.3 =
 * released December 12, 2010
@@ -131,7 +135,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * updated installation instructions to reflect addition of Gravatar support
 
 = 1.2 =
-* completed Gravatar implementaion - displays Gravatar associated with user-ID 1 (main administrator)
+* completed Gravatar implementation - displays Gravatar associated with user-ID 1 (main administrator)
 * added plugin specific style sheet (required by Gravatar implementation)
 * noted suggested maximum pixel size of Gravatar but no restrictions set
 * updated screenshot of option panel

@@ -43,7 +43,7 @@ if (version_compare($wp_version, "3.0", "<")) { // per the use of home_url()
 function BNS_Corner_Logo_Scripts_and_Styles_Action() {
     /* Scripts */
     /* Styles */
-  	wp_enqueue_style( 'BNS-Corner-Logo-Style', plugin_dir_url( __FILE__ ) . '/css/bns-corner-logo-style.css', array(), '1.5', 'screen' );
+  	wp_enqueue_style( 'BNS-Corner-Logo-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-style.css', array(), '1.5', 'screen' );
 }
 add_action('wp_enqueue_scripts', 'BNS_Corner_Logo_Scripts_and_Styles_Action');
 
