@@ -19,8 +19,8 @@
 */
 
 /* BNS Corner Logo CSS */
-div.bns-logo {text-align: center; position: relative; z-index: 10000;}
-div.bns-logo .avatar {float:none; margin:0; width:auto;}
-div.bns-logo a img {border:none; background:none; text-decoration:none; width: 100%;}
+div.bns-logo { text-align: center; position: relative; z-index: 10000; }
+div.bns-logo .avatar { float:none; margin:0; width:auto; }
+div.bns-logo a img { border:none; background:none; text-decoration:none; width: 100%; }
 
 /* Last Updated: June 4, 2011 v1.5 */

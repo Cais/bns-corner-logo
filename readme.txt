@@ -88,6 +88,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * confirmed compatible with WordPress 3.3
 * added phpDoc Style documentation
 * added i18n support
+* added conditional enqueue of `bns-corner-logo-custom-style.css` stylesheet
 
 = 1.5 =
 * released June 2011
