@@ -86,6 +86,8 @@ Please stay current with your WordPress installation, your active theme, and you
 = 1.6 =
 * released ...
 * confirmed compatible with WordPress 3.3
+* added phpDoc Style documentation
+* added i18n support
 
 = 1.5 =
 * released June 2011
@@ -120,7 +122,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * updated license declaration
 
 = 1.2.3.1 =
-* clarified the plugin's release under a GPL license
+* clarified the plugin is released under a GPLv2 license
 
 = 1.2.3 =
 * compatibility check for 2.9.1 completed

@@ -3,41 +3,82 @@
 Plugin Name: BNS Corner Logo
 Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
 Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
-Version: 1.5
+Version: 1.6
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
-License: GPL2
+License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
 /* Last Updated: June 4, 2011 v1.5 */
 
-/*  Copyright 2009-2011  Edward Caissie  (email : edward.caissie@gmail.com)
+/**
+ * BNS Corner Logo
+ *
+ * Widget to display a user selected image as a logo; or, used as a plugin that
+ * displays the image fixed in one of the four corners of the display.
+ *
+ * @package     BNS_Corner_Logo
+ * @link        http://buynowshop.com/plugins/bns-corner-logo/
+ * @link        https://github.com/Cais/bns-corner-logo/
+ * @link        http://wordpress.org/extend/plugins/bns-corner-logo/
+ * @version     1.6
+ * @author      Edward Caissie <edward.caissie@gmail.com>
+ * @copyright   Copyright (c) 2009-2011, Edward Caissie
+ *
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License version 2, as published by the
+ * Free Software Foundation.
+ *
+ * You may NOT assume that you can use any other version of the GPL.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to:
+ *
+ *      Free Software Foundation, Inc.
+ *      51 Franklin St, Fifth Floor
+ *      Boston, MA  02110-1301  USA
+ *
+ * The license for this software can also likely be found here:
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Last revised November 16, 2011
+ */
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License version 2,
-    as published by the Free Software Foundation.
-
-    You may NOT assume that you can use any other version of the GPL.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
-    The license for this software can also likely be found here:
-    http://www.gnu.org/licenses/gpl-2.0.html
-*/
-
+/**
+ * Check installed WordPress version for compatibility
+ *
+ * @package     BNS_Corner_Logo
+ * @since       1.0
+ * @version     1.3
+ * @internal    Version 3.0 being used in reference to home_url()
+ *
+ * Last revised November 16, 2011.
+ * @todo    Check version compatibility after other updates are completed
+ * @todo    Re-write to be i18n compatible
+ */
 global $wp_version;
 $exit_message = 'BNS Corner Logo requires WordPress version 3.0 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>';
-if (version_compare($wp_version, "3.0", "<")) { // per the use of home_url()
+if (version_compare($wp_version, "3.0", "<")) {
 	exit ($exit_message);
 }
+
+/**
+ * BNS Corner Logo TextDomain
+ * Make plugin text available for translation (i18n)
+ *
+ * @package:    BNS_Corner_Logo
+ * @since:      1.6
+ *
+ * @internal    Note: Translation files are expected to be found in the plugin root folder / directory.
+ * @internal    `bns-cl` is being used in place of `bns-corner-logo`
+ */
+load_plugin_textdomain( 'bns-cl' );
+// End: BNS Corner Logo TextDomain
 
 // Add BNS Corner Logo Scripts and Styles
 function BNS_Corner_Logo_Scripts_and_Styles_Action() {
