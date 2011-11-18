@@ -10,8 +10,6 @@ License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
-/* Last Updated: June 4, 2011 v1.5 */
-
 /**
  * BNS Corner Logo
  *
@@ -46,7 +44,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * The license for this software can also likely be found here:
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
- * Last revised November 16, 2011
+ * Last revised November 18, 2011
  */
 
 /**
@@ -102,13 +100,24 @@ function BNS_Corner_Logo_Scripts_and_Styles() {
 }
 add_action('wp_enqueue_scripts', 'BNS_Corner_Logo_Scripts_and_Styles');
 
-/** Register widget */
+/**
+ * Register widget
+ * @return void
+ */
 function load_bnscl_widget() {
         register_widget( 'BNS_Corner_Logo_Widget' );
 }
 add_action( 'widgets_init', 'load_bnscl_widget' );
 
 class BNS_Corner_Logo_Widget extends WP_Widget {
+        /**
+         * BNS Corner Logo Widget
+         *
+         * Used to extend WP_Widget class
+         *
+         * @package BNS_Corner_Logo
+         * @return  void
+         */
         function BNS_Corner_Logo_Widget() {
                 /** Widget settings */
                 $widget_ops = array( 'classname' => 'bns-corner-logo', 'description' => __( 'Widget to display a logo; or, used as a plugin displays image fixed in one of the four corners.', 'bns-cl' ) );
@@ -118,6 +127,13 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                 $this->WP_Widget( 'bns-corner-logo', 'BNS Corner Logo', $widget_ops, $control_ops );
         }
 
+        /**
+         * Override widget method of class WP_Widget
+         *
+         * @param   $args
+         * @param   $instance
+         * @return  void
+         */
         function widget( $args, $instance ) {
                 extract( $args );
                 /** User-selected settings */
@@ -151,6 +167,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                             <!-- Use FIRST Admin gravatar user ID = 1 as default -->
                             <?php if ( $use_gravatar ) {
                                 $user_details = get_userdata( $gravatar_user_id );
+                                /** @noinspection PhpUndefinedFieldInspection */
                                 $user_email = $user_details->user_email;
                                 echo get_avatar( $user_email, $gravatar_size);
                             } else { ?>
@@ -173,6 +190,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                             <!-- Use FIRST Admin gravatar user ID = 1 as default -->
                             <?php if ( $use_gravatar ) {
                                 $user_details = get_userdata( $gravatar_user_id );
+                                /** @noinspection PhpUndefinedFieldInspection */
                                 $user_email = $user_details->user_email;
                                 echo get_avatar( $user_email, $gravatar_size);
                             } else { ?>
@@ -190,6 +208,13 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                 }
         }
 
+        /**
+         * Override update method of class WP_Widget
+         *
+         * @param   $new_instance
+         * @param   $old_instance
+         * @return  array - widget options and settings
+         */
         function update( $new_instance, $old_instance ) {
                 $instance = $old_instance;
                 /** Strip tags (if needed) and update the widget settings */
@@ -206,6 +231,12 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                 return $instance;
         }
 
+        /**
+         * Overrides form method of class WP_Widget
+         *
+         * @param $instance
+         * @return void
+         */
         function form( $instance ) {
                 /* Set up some default widget settings. */
                 $defaults = array( 'title'              => __( 'My Logo Image', 'bns-cl' ),
