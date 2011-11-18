@@ -231,15 +231,16 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                 </p>
 
                 <p>
-                    <label for="<?php echo $this->get_field_id( 'gravatar_user_id' ); ?>"><?php _e( 'Set the User ID for the Gravatar', 'bns-cl' ); ?></label>
+                    <label for="<?php echo $this->get_field_id( 'gravatar_user_id' ); ?>"><?php _e( 'Set Gravatar by User ID Number', 'bns-cl' ); ?></label>
                     <input class="widefat" id="<?php echo $this->get_field_id( 'gravatar_user_id' ); ?>" name="<?php echo $this->get_field_name( 'gravatar_user_id' ); ?>" value="<?php echo $instance['gravatar_user_id']; ?>" style="width:100%;" />
                 </p>
 
                 <p>
                     <label for="<?php echo $this->get_field_id( 'gravatar_size' ); ?>"><?php _e( 'Gravatar size in pixels:', 'bns-cl' ); ?></label>
                     <input class="widefat" id="<?php echo $this->get_field_id( 'gravatar_size' ); ?>" name="<?php echo $this->get_field_name( 'gravatar_size' ); ?>" value="<?php echo $instance['gravatar_size']; ?>" style="width:100%;" />
-                    <em><?php _e( 'NB: The Gravatar used is set as the first administrator by user ID.', 'bns-cl' ); ?></em>
                 </p>
+
+                <hr /> <!-- Aesthetic separator -->
 
                 <p>
                     <label for="<?php echo $this->get_field_id( 'image_url' ); ?>"><?php _e( 'URL of Image:', 'bns-cl' ); ?></label>
