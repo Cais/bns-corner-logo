@@ -121,15 +121,16 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
         function widget( $args, $instance ) {
                 extract( $args );
                 /** User-selected settings */
-                $title          = apply_filters('widget_title', $instance['title'] );
-                $use_gravatar   = $instance['use_gravatar'];
-                $gravatar_size  = $instance['gravatar_size'];
-                $image_url      = $instance['image_url'];
-                $image_alt_text	= $instance['image_alt_text'];
-                $image_link     = $instance['image_link'];
-                $new_window     = $instance['new_window'];
-                $widget_plugin	= $instance['widget_plugin'];
-                $logo_location	= $instance['logo_location'];
+                $title              = apply_filters('widget_title', $instance['title'] );
+                $use_gravatar       = $instance['use_gravatar'];
+                $gravatar_user_id   = $instance['gravatar_user_id'];
+                $gravatar_size      = $instance['gravatar_size'];
+                $image_url          = $instance['image_url'];
+                $image_alt_text	    = $instance['image_alt_text'];
+                $image_link         = $instance['image_link'];
+                $new_window         = $instance['new_window'];
+                $widget_plugin	    = $instance['widget_plugin'];
+                $logo_location	    = $instance['logo_location'];
 
                 if ( ! $widget_plugin ) {
                     /** @var $before_widget string - define by theme */
@@ -147,9 +148,11 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                     /** Display image based on widget settings */ ?>
                     <div class="bns-logo">
                         <a <?php if ( $new_window ) echo 'target="_blank"'; ?> href="<?php echo $image_link; ?>">
-                            <!-- Use FIRST Admin gravatar -->
+                            <!-- Use FIRST Admin gravatar user ID = 1 as default -->
                             <?php if ( $use_gravatar ) {
-                                echo get_avatar( get_bloginfo( 'admin_email' ), $gravatar_size);
+                                $user_details = get_userdata( $gravatar_user_id );
+                                $user_email = $user_details->user_email;
+                                echo get_avatar( $user_email, $gravatar_size);
                             } else { ?>
                                 <img style="" alt="<?php echo $image_alt_text; ?>" src="<?php echo $image_url;?>" />
                             <?php } ?>
@@ -167,9 +170,11 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                     } ?>
                     <div class="bns-logo <?php echo $logo_position; ?>">
                         <a <?php if ( $new_window ) echo 'target="_blank"'; ?> href="<?php echo $image_link; ?>">
-                            <!-- Use FIRST Admin gravatar -->
+                            <!-- Use FIRST Admin gravatar user ID = 1 as default -->
                             <?php if ( $use_gravatar ) {
-                                echo get_avatar( get_bloginfo( 'admin_email' ), $gravatar_size);
+                                $user_details = get_userdata( $gravatar_user_id );
+                                $user_email = $user_details->user_email;
+                                echo get_avatar( $user_email, $gravatar_size);
                             } else { ?>
                                 <img style="" alt="<?php echo $image_alt_text; ?>" src="<?php echo $image_url;?>" />
                             <?php } ?>
@@ -188,29 +193,31 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
         function update( $new_instance, $old_instance ) {
                 $instance = $old_instance;
                 /** Strip tags (if needed) and update the widget settings */
-                $instance['title']          = strip_tags( $new_instance['title'] );
-                $instance['use_gravatar']   = $new_instance['use_gravatar'];
-                $instance['gravatar_size']	= $new_instance['gravatar_size'];
-                $instance['image_url']      = strip_tags( $new_instance['image_url'] );
-                $instance['image_alt_text']	= strip_tags( $new_instance['image_alt_text'] );
-                $instance['image_link']     = strip_tags( $new_instance['image_link'] );
-                $instance['new_window']     = $new_instance['new_window'];
-                $instance['widget_plugin']	= $new_instance['widget_plugin'];
-                $instance['logo_location']	= $new_instance['logo_location'];
+                $instance['title']              = strip_tags( $new_instance['title'] );
+                $instance['use_gravatar']       = $new_instance['use_gravatar'];
+                $instance['gravatar_user_id']   = $new_instance['gravatar_user_id'];
+                $instance['gravatar_size']	    = $new_instance['gravatar_size'];
+                $instance['image_url']          = strip_tags( $new_instance['image_url'] );
+                $instance['image_alt_text']	    = strip_tags( $new_instance['image_alt_text'] );
+                $instance['image_link']         = strip_tags( $new_instance['image_link'] );
+                $instance['new_window']         = $new_instance['new_window'];
+                $instance['widget_plugin']	    = $new_instance['widget_plugin'];
+                $instance['logo_location']	    = $new_instance['logo_location'];
                 return $instance;
         }
 
         function form( $instance ) {
                 /* Set up some default widget settings. */
-                $defaults = array( 'title'          => __( 'My Logo Image', 'bns-cl' ),
-                                   'use_gravatar'   => false,
-                                   'gravatar_size'  => '96',
-                                   'image_url'      => '',
-                                   'image_alt_text' => '',
-                                   'image_link'     => '',
-                                   'new_window'     => false,
-                                   'widget_plugin'  => false,
-                                   'logo_location'  => 'Bottom-Right'
+                $defaults = array( 'title'              => __( 'My Logo Image', 'bns-cl' ),
+                                   'use_gravatar'       => false,
+                                   'gravatar_user_id'   => '1',
+                                   'gravatar_size'      => '96',
+                                   'image_url'          => '',
+                                   'image_alt_text'     => '',
+                                   'image_link'         => '',
+                                   'new_window'         => false,
+                                   'widget_plugin'      => false,
+                                   'logo_location'      => 'Bottom-Right'
                 );
                 $instance = wp_parse_args( ( array ) $instance, $defaults ); ?>
                 <p>
@@ -221,6 +228,11 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                 <p>
                     <input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['use_gravatar'], true ); ?> id="<?php echo $this->get_field_id( 'use_gravatar' ); ?>" name="<?php echo $this->get_field_name( 'use_gravatar' ); ?>" />
                     <label for="<?php echo $this->get_field_id( 'use_gravatar' ); ?>"><?php printf( __( 'Use your %1$s image?', 'bns-cl' ), '<a href="http://gravatar.com">Gravatar</a>' ); ?></label>
+                </p>
+
+                <p>
+                    <label for="<?php echo $this->get_field_id( 'gravatar_user_id' ); ?>"><?php _e( 'Set the User ID for the Gravatar', 'bns-cl' ); ?></label>
+                    <input class="widefat" id="<?php echo $this->get_field_id( 'gravatar_user_id' ); ?>" name="<?php echo $this->get_field_name( 'gravatar_user_id' ); ?>" value="<?php echo $instance['gravatar_user_id']; ?>" style="width:100%;" />
                 </p>
 
                 <p>

@@ -91,6 +91,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * added conditional enqueue of `bns-corner-logo-custom-style.css` stylesheet
 * removed inline `z-index` reference; see `bns-corner-logo` stylesheet for value
 * moved inline style for corner positions to plugin stylesheet
+* refactored `use_gravatar` code to have option of choosing gravatar by user ID
 
 = 1.5 =
 * released June 2011
