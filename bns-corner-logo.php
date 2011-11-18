@@ -157,15 +157,15 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                     </div> <!-- .bns-logo -->
                 <?php } else {
                     if ( $logo_location == "Bottom-Right" ) {
-                        $logo_position = "bottom:0; right:0;";
+                        $logo_position = 'fixed-bottom-right';
                     } elseif ( $logo_location == "Bottom-Left" ) {
-                        $logo_position = "bottom:0; left:0;";
+                        $logo_position = 'fixed-bottom-left';
                     } elseif ( $logo_location == "Top-Right" ) {
-                        $logo_position = "top:0; right:0;";
+                        $logo_position = 'fixed-top-right';
                     } elseif ( $logo_location == "Top-Left" ) {
-                        $logo_position = "top:0; left:0;";
+                        $logo_position = 'fixed-top-left';
                     } ?>
-                    <div class="bns-logo" style="position:fixed; <?php echo $logo_position; ?>">
+                    <div class="bns-logo <?php echo $logo_position; ?>">
                         <a <?php if ( $new_window ) echo 'target="_blank"'; ?> href="<?php echo $image_link; ?>">
                             <!-- Use FIRST Admin gravatar -->
                             <?php if ( $use_gravatar ) {

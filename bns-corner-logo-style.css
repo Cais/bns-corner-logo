@@ -18,9 +18,15 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+/* Last revised November 17, 2011 v1.6 */
+
 /* BNS Corner Logo CSS */
 div.bns-logo { text-align: center; position: relative; z-index: 10000; }
-div.bns-logo .avatar { float:none; margin:0; width:auto; }
-div.bns-logo a img { border:none; background:none; text-decoration:none; width: 100%; }
+div.bns-logo .avatar { float: none; margin: 0; width: auto; }
+div.bns-logo a img { border: none; background: none; text-decoration: none; width: 100%; }
 
-/* Last Updated: June 4, 2011 v1.5 */
+/* Positioning for the corners */
+div.bns-logo.fixed-bottom-right { position: fixed; bottom: 0; right: 0; }
+div.bns-logo.fixed-bottom-left { position: fixed; bottom: 0; left: 0; }
+div.bns-logo.fixed-top-right { position: fixed; top: 0; right: 0; }
+div.bns-logo.fixed-top-left { position: fixed; top: 0; left: 0; }
