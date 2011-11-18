@@ -4,6 +4,7 @@ Plugin Name: BNS Corner Logo
 Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
 Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
 Version: 1.6
+Text Domain: bns-cl
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
 License: GNU General Public License v2
@@ -52,17 +53,16 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
  * @package     BNS_Corner_Logo
  * @since       1.0
- * @version     1.3
+ * @version     1.6
  * @internal    Version 3.0 being used in reference to home_url()
  *
- * Last revised November 16, 2011.
- * @todo    Check version compatibility after other updates are completed
- * @todo    Re-write to be i18n compatible
+ * Last revised November 18, 2011.
+ * Re-written to be i18n compatible
  */
 global $wp_version;
-$exit_message = 'BNS Corner Logo requires WordPress version 3.0 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>';
-if (version_compare($wp_version, "3.0", "<")) {
-	exit ($exit_message);
+$exit_message = __( 'BNS Corner Logo requires WordPress version 3.0 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>', 'bns-cl');
+if ( version_compare( $wp_version, "3.0", "<" ) ) {
+	exit( $exit_message );
 }
 
 /**
@@ -238,7 +238,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
          * @return void
          */
         function form( $instance ) {
-                /* Set up some default widget settings. */
+                /** Set up some default widget settings */
                 $defaults = array( 'title'              => __( 'My Logo Image', 'bns-cl' ),
                                    'use_gravatar'       => false,
                                    'gravatar_user_id'   => '1',

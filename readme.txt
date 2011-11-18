@@ -3,8 +3,8 @@ Contributors: cais
 Donate link: http://buynowshop.com/
 Tags: image, logo, multiple widgets, gravatar, multisite compatible
 Requires at least: 3.0
-Tested up to: 3.2
-Stable tag: 1.5
+Tested up to: 3.3
+Stable tag: 1.6
 
 Widget to display a logo; or, used as a plugin displays image fixed in one of the four corners.
 
@@ -84,7 +84,7 @@ Please stay current with your WordPress installation, your active theme, and you
 
 == Changelog ==
 = 1.6 =
-* released ...
+* released November 2011
 * confirmed compatible with WordPress 3.3
 * added phpDoc Style documentation
 * added i18n support

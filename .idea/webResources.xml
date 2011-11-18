@@ -9,6 +9,13 @@
           </resourceRoots>
         </entryData>
       </entry>
+      <entry url="file://$PROJECT_DIR$/../../../wp-includes">
+        <entryData>
+          <resourceRoots>
+            <path value="file://$PROJECT_DIR$/../../../wp-includes" />
+          </resourceRoots>
+        </entryData>
+      </entry>
     </contentEntries>
   </component>
 </project>
