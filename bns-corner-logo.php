@@ -3,7 +3,7 @@
 Plugin Name: BNS Corner Logo
 Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
 Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
-Version: 1.6
+Version: 1.6.1
 Text Domain: bns-cl
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
@@ -23,7 +23,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @link        http://wordpress.org/extend/plugins/bns-corner-logo/
  * @version     1.6
  * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2009-2011, Edward Caissie
+ * @copyright   Copyright (c) 2009-2012, Edward Caissie
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License version 2, as published by the

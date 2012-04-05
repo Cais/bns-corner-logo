@@ -3,8 +3,8 @@ Contributors: cais
 Donate link: http://buynowshop.com/
 Tags: image, logo, multiple widgets, gravatar, multisite compatible
 Requires at least: 3.0
-Tested up to: 3.3
-Stable tag: 1.6
+Tested up to: 3.4
+Stable tag: 1.6.1
 
 Widget to display a logo; or, used as a plugin displays image fixed in one of the four corners.
 
@@ -59,7 +59,7 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 3. An image in the sidebar and an image "fixed" in the bottom-right corner showing multiple instances of the widget.
 
 == Other Notes ==
-  Copyright 2009-2011  Edward Caissie  (email : edward.caissie@gmail.com)
+  Copyright 2009-2012  Edward Caissie  (email : edward.caissie@gmail.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 2,
@@ -83,6 +83,9 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= 1.6.1 =
+* confirmed compatible with WordPress 3.4
+
 = 1.6 =
 * released November 2011
 * confirmed compatible with WordPress 3.3
