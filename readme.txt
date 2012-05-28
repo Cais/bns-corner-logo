@@ -85,6 +85,7 @@ Please stay current with your WordPress installation, your active theme, and you
 == Changelog ==
 = 1.6.1 =
 * confirmed compatible with WordPress 3.4
+* inline documentation updates and minor code formatting
 
 = 1.6 =
 * released November 2011
