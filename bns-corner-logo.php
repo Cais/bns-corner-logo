@@ -3,7 +3,7 @@
 Plugin Name: BNS Corner Logo
 Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
 Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
-Version: 1.6.1
+Version: 1.6.2
 Text Domain: bns-cl
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
@@ -21,7 +21,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @link        http://buynowshop.com/plugins/bns-corner-logo/
  * @link        https://github.com/Cais/bns-corner-logo/
  * @link        http://wordpress.org/extend/plugins/bns-corner-logo/
- * @version     1.6.1
+ * @version     1.6.2
  * @author      Edward Caissie <edward.caissie@gmail.com>
  * @copyright   Copyright (c) 2009-2012, Edward Caissie
  *
@@ -86,20 +86,26 @@ load_plugin_textdomain( 'bns-cl' );
  * @package BNS_Corner_Logo
  * @since   1.5
  *
+ * @uses    get_plugin_data
  * @uses    plugin_dir_url
  * @uses    plugin_dir_path
  * @uses    wp_enqueue_style
  *
- * @version 1.6
- * @date    November 16, 2011
- * @todo    Look at using the plugin version data for the version number in `wp_enqueue_style` rather than hard-coding a number
+ * @version 1.6.2
+ * @date    August 2, 2012
+ * Use the plugin version data for the version number in `wp_enqueue_style` rather than hard-coding a number
  */
 function BNS_Corner_Logo_Scripts_and_Styles() {
+    /** Call the wp-admin plugin code */
+    require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+    /** @var $bnscl_data - holds the plugin header data */
+    $bnscl_data = get_plugin_data( __FILE__ );
+
     /** Scripts */
     /** Styles */
-    wp_enqueue_style( 'BNS-Corner-Logo-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-style.css', array(), '1.6.1', 'screen' );
+    wp_enqueue_style( 'BNS-Corner-Logo-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-style.css', array(), $bnscl['Version'], 'screen' );
     if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-style.css' ) ) { // Only enqueue if available
-        wp_enqueue_style( 'BNS-Corner-Logo-Custom-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-style.css', array(), '1.6.1', 'screen' );
+        wp_enqueue_style( 'BNS-Corner-Logo-Custom-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-style.css', array(), $bnscl['Version'], 'screen' );
     }
 }
 add_action('wp_enqueue_scripts', 'BNS_Corner_Logo_Scripts_and_Styles');
