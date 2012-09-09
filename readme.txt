@@ -1,10 +1,10 @@
 === BNS Corner Logo ===
 Contributors: cais
 Donate link: http://buynowshop.com/
-Tags: image, logo, multiple widgets, gravatar, multisite compatible
+Tags: image, logo, multiple widgets, gravatar, multisite compatible, widget-only
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 1.6.2.1
+Tested up to: 3.4.2
+Stable tag: 1.6.2
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
