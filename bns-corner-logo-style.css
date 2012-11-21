@@ -38,5 +38,5 @@ div.bns-logo.fixed-top-right { position: fixed; top: 0; right: 0; }
 div.bns-logo.fixed-top-left { position: fixed; top: 0; left: 0; }
 
 /** Adjust top position if user is logged-in */
-.logged-in div.bns-logo.fixed-top-right { top: 32px; }
-.logged-in div.bns-logo.fixed-top-left { top: 32px; }
+.logged-in div.bns-logo.fixed-top-right { top: 28px; }
+.logged-in div.bns-logo.fixed-top-left { top: 28px; }
