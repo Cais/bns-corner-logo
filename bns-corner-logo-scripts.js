@@ -21,3 +21,12 @@
  *      51 Franklin St, Fifth Floor
  *      Boston, MA  02110-1301  USA
  */
+
+jQuery( document ).ready( function( $ ) {
+    /** Note: $() will work as an alias for jQuery() inside of this function */
+    /**
+     * Stop Gravatar's Hovercard effect by adding 'no-grav' class to the
+     * gravatar HTML image tag.
+     */
+    $( 'div.bns-logo a img.avatar' ).addClass( 'no-grav' );
+} );
