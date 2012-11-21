@@ -89,6 +89,8 @@ Please stay current with your WordPress installation, your active theme, and you
 * Release - November 2012
 * Added `bns-corner-logo-scripts.js`
 * Added 'no-grav' class to HTML img tag if Gravatar is used to stop Hovercard effect
+* Added i18n support to position drop-down in widget control panel
+* Adjusted CSS of top positions if user is logged-in
 * Enqueued JavaScript 'bns-corner-logo-scripts.js'
 * Enqueued JavaScript 'bns-corner-logo-custom-scripts.css' if it exists
 

@@ -270,6 +270,9 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
     /**
      * Overrides form method of class WP_Widget
      *
+     * @package BNS_Corner_Logo
+     * @since   1.0
+     *
      * @param   $instance
      *
      * @uses    checked
@@ -278,6 +281,10 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
      * @uses    selected
      *
      * @return  void
+     *
+     * @version 1.7
+     * @date    November 21, 2012
+     * Added i18n support to position drop-down in widget control panel
      */
     function form( $instance ) {
         /** Set up some default widget settings */
@@ -345,10 +352,10 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
         <p>
             <label for="<?php echo $this->get_field_id( 'logo_location' ); ?>"><?php _e( 'Plugin Logo Location:', 'bns-cl' ); ?></label>
             <select id="<?php echo $this->get_field_id( 'logo_location' ); ?>" name="<?php echo $this->get_field_name( 'logo_location' ); ?>" class="widefat">
-                <option <?php selected( 'Bottom-Right', $instance['logo_location'], true ); ?>>Bottom-Right</option>
-                <option <?php selected( 'Bottom-Left', $instance['logo_location'], true ); ?>>Bottom-Left</option>
-                <option <?php selected( 'Top-Right', $instance['logo_location'], true ); ?>>Top-Right</option>
-                <option <?php selected( 'Top-Left', $instance['logo_location'], true ); ?>>Top-Left</option>
+                <option <?php selected( __( 'Bottom-Right', 'bns-cl' ), $instance['logo_location'], true ); ?>><?php _e( 'Bottom-Right', 'bns-cl'); ?></option>
+                <option <?php selected( __( 'Bottom-Left', 'bns-cl' ), $instance['logo_location'], true ); ?>><?php _e( 'Bottom-Left', 'bns-cl' ); ?></option>
+                <option <?php selected( __( 'Top-Right', 'bns-cl' ), $instance['logo_location'], true ); ?>><?php  _e( 'Top-Right' , 'bns-cl' ); ?></option>
+                <option <?php selected( __( 'Top-Left', 'bns-cl' ), $instance['logo_location'], true ); ?>><?php _e( 'Top-Left', 'bns-cl' ); ?></option>
             </select>
         </p>
     <?php }
