@@ -44,6 +44,8 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
  * The license for this software can also likely be found here:
  * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * @todo Implement "... to disable Gravatar's Hovercard on a single image, just add a "no-grav" class to it." per @kovshenin
  */
 
 /**
