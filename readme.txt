@@ -87,6 +87,9 @@ Please stay current with your WordPress installation, your active theme, and you
 == Changelog ==
 = 1.7 =
 * Release - November 2012
+* Added `bns-corner-logo-scripts.js`
+* Enqueued JavaScript 'bns-corner-logo-scripts.js'
+* Enqueued JavaScript 'bns-corner-logo-custom-scripts.css' if it exists
 
 = 1.6.2 =
 * Use the plugin version data for the version number in `wp_enqueue_style` rather than hard-coding a number

@@ -96,9 +96,13 @@ load_plugin_textdomain( 'bns-cl' );
  * @version 1.6.2.1
  * @date    August 14, 2012
  * Fixed undefined index
+ * Use the plugin version data for the version number in `wp_enqueue_style`
+ * rather than hard-coding a number
  *
- * @date    August 2, 2012
- * Use the plugin version data for the version number in `wp_enqueue_style` rather than hard-coding a number
+ * @version 1.7
+ * @date    November 21, 2012
+ * Enqueued JavaScript 'bns-corner-logo-scripts.js'
+ * Enqueued JavaScript 'bns-corner-logo-custom-scripts.css' if it exists
  */
 function BNS_Corner_Logo_Scripts_and_Styles() {
     /** Call the wp-admin plugin code */
@@ -107,6 +111,11 @@ function BNS_Corner_Logo_Scripts_and_Styles() {
     $bnscl_data = get_plugin_data( __FILE__ );
 
     /** Scripts */
+    wp_enqueue_script( 'BNS-Corner-Logo-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-scripts.js', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
+    if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-scripts.css' ) ) { // Only enqueue if available
+        wp_enqueue_style( 'BNS-Corner-Logo-Custom-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-scripts.css', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
+    }
+
     /** Styles */
     wp_enqueue_style( 'BNS-Corner-Logo-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-style.css', array(), $bnscl_data['Version'], 'screen' );
     if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-style.css' ) ) { // Only enqueue if available
