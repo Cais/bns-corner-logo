@@ -85,6 +85,10 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= 1.7.1 =
+* Release - January 2013
+* Address "smart-phone" screens being obfuscated by image
+
 = 1.7 =
 * Release - November 2012
 * Added `bns-corner-logo-scripts.js`

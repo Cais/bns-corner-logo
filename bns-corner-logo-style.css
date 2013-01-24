@@ -1,7 +1,7 @@
 /**
  * This file is part of BNS Corner Logo.
  *
- * Copyright 2009-2012  Edward Caissie  (email : edward.caissie@gmail.com)
+ * Copyright 2009-2013  Edward Caissie  (email : edward.caissie@gmail.com)
  *
  * BNS Corner Logo is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License, version 2, as published
@@ -24,6 +24,10 @@
  * @version 1.7
  * @date    November 21, 2012
  * Adjusted top position if user is logged-in
+ *
+ * @version 1.7.1
+ * @date    January 24, 2013
+ * Address "smart-phone" screens being obfuscated by image
  */
 
 /** BNS Corner Logo CSS */
@@ -40,3 +44,17 @@ div.bns-logo.fixed-top-left { position: fixed; top: 0; left: 0; }
 /** Adjust top position if user is logged-in */
 .logged-in div.bns-logo.fixed-top-right { top: 28px; }
 .logged-in div.bns-logo.fixed-top-left { top: 28px; }
+
+/* Smartphones (landscape) ----------- */
+@media only screen
+and ( min-width : 321px ) {
+    /* Styles */
+    div.bns-logo { display: none; }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen
+and ( max-width : 320px ) {
+    /* Styles */
+    div.bns-logo { display: none; }
+}
