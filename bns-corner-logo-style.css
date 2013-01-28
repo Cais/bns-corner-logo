@@ -50,14 +50,7 @@ div.bns-logo.fixed-top-left { position: fixed; top: 0; left: 0; }
 .logged-in div.bns-logo.fixed-top-right { top: 28px; }
 .logged-in div.bns-logo.fixed-top-left { top: 28px; }
 
-/* Smartphones (landscape) ----------- */
-@media only screen
-and ( min-width : 321px ) {
-    /* Styles */
-    div.bns-logo { display: none; }
-}
-
-/* Smartphones (portrait) ----------- */
+/** Smartphones (portrait) ----------- */
 @media only screen
 and ( max-width : 320px ) {
     /* Styles */
