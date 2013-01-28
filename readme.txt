@@ -88,6 +88,8 @@ Please stay current with your WordPress installation, your active theme, and you
 = 1.7.1 =
 * Release - January 2013
 * Address "smart-phone" screens being obfuscated by image
+* Removed `width: 100%` from `div.bns-logo a img`
+* Removed `load_textdomain` as redundant
 
 = 1.7 =
 * Release - November 2012

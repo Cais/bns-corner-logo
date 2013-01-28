@@ -45,8 +45,13 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * The license for this software can also likely be found here:
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
+ * @version 1.7.1
+ * @date    January 27, 2013
+ * Removed `load_textdomain` as redundant
+ *
  * @todo Implement "... to disable Gravatar's Hovercard on a single image, just add a "no-grav" class to it." per @kovshenin
  */
+
 
 /**
  * Check installed WordPress version for compatibility
@@ -67,18 +72,6 @@ if ( version_compare( $wp_version, "3.0", "<" ) ) {
 	exit( $exit_message );
 }
 
-/**
- * BNS Corner Logo TextDomain
- * Make plugin text available for translation (i18n)
- *
- * @package:    BNS_Corner_Logo
- * @since:      1.6
- *
- * @internal    Note: Translation files are expected to be found in the plugin root folder / directory.
- * @internal    `bns-cl` is being used in place of `bns-corner-logo`
- */
-load_plugin_textdomain( 'bns-cl' );
-// End: BNS Corner Logo TextDomain
 
 /**
  * Enqueue Plugin Scripts and Styles
@@ -124,6 +117,7 @@ function BNS_Corner_Logo_Scripts_and_Styles() {
 }
 add_action('wp_enqueue_scripts', 'BNS_Corner_Logo_Scripts_and_Styles');
 
+
 /**
  * Register widget
  *
@@ -135,6 +129,7 @@ function load_bnscl_widget() {
     register_widget( 'BNS_Corner_Logo_Widget' );
 }
 add_action( 'widgets_init', 'load_bnscl_widget' );
+
 
 class BNS_Corner_Logo_Widget extends WP_Widget {
     /**
