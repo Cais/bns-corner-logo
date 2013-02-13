@@ -94,7 +94,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
         add_action( 'widgets_init', array( $this, 'load_bnscl_widget' ) );
 
         /** Add scripts and style */
-        add_action('wp_enqueue_scripts', array( $this, 'BNS_Corner_Logo_Scripts_and_Styles') );
+        add_action('wp_enqueue_scripts', array( $this, 'scripts_and_styles') );
 
     } /** End function - bns corner logo widget */
 
@@ -322,18 +322,16 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
      * @uses    plugin_dir_path
      * @uses    wp_enqueue_style
      *
-     * @version 1.6.2.1
-     * @date    August 14, 2012
-     * Fixed undefined index
-     * Use the plugin version data for the version number in `wp_enqueue_style`
-     * rather than hard-coding a number
-     *
      * @version 1.7
      * @date    November 21, 2012
      * Enqueued JavaScript 'bns-corner-logo-scripts.js'
      * Enqueued JavaScript 'bns-corner-logo-custom-scripts.css' if it exists
+     *
+     * @version 1.8
+     * @date    February 13, 2013
+     * Renamed to `scripts_and_styles`
      */
-    function BNS_Corner_Logo_Scripts_and_Styles() {
+    function scripts_and_styles() {
         /** Call the wp-admin plugin code */
         require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
         /** @var $bnscl_data - holds the plugin header data */
