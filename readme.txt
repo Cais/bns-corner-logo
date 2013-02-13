@@ -88,10 +88,11 @@ Please stay current with your WordPress installation, your active theme, and you
 = 1.8 =
 * Release - February 2013
 * Address "smart-phone" screens being obfuscated by image
-* Removed `width: 100%` from `div.bns-logo a img`
-* Removed `load_textdomain` as redundant
 * Documentation updates - including code block termination comments
 * Move all code into class structure
+* Removed `width: 100%` from `div.bns-logo a img`
+* Removed `load_textdomain` as redundant
+* Renamed `BNS_Corner_Logo_Scripts_and_Styles` to `scripts_and_styles`
 
 = 1.7 =
 * Release - November 2012
