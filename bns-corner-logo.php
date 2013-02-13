@@ -98,6 +98,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 
     } /** End function - bns corner logo widget */
 
+
     /**
      * Override widget method of class WP_Widget
      *
@@ -151,7 +152,8 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                     <?php } ?>
                 </a>
             </div> <!-- .bns-logo -->
-        <?php } else {
+        <?php
+        } else {
             if ( $logo_location == "Bottom-Right" ) {
                 $logo_position = 'fixed-bottom-right';
             } elseif ( $logo_location == "Bottom-Left" ) {
@@ -174,7 +176,8 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                     <?php } /** End if - use gravatar */ ?>
                 </a>
             </div> <!-- .bns-logo -->
-        <?php } /** End if - not widget plugin */
+        <?php
+        } /** End if - not widget plugin */
         /** End - Display image based on widget settings */
 
         /** After widget (defined by themes) */
@@ -302,7 +305,8 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                 <option <?php selected( __( 'Top-Left', 'bns-cl' ), $instance['logo_location'], true ); ?>><?php _e( 'Top-Left', 'bns-cl' ); ?></option>
             </select>
         </p>
-    <?php } /** End function - form */
+    <?php
+    } /** End function - form */
 
 
     /**
