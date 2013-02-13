@@ -208,7 +208,8 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
         $instance['widget_plugin']	    = $new_instance['widget_plugin'];
         $instance['logo_location']	    = $new_instance['logo_location'];
         return $instance;
-    }
+    } /** End function - update */
+
 
     /**
      * Overrides form method of class WP_Widget
@@ -301,7 +302,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                 <option <?php selected( __( 'Top-Left', 'bns-cl' ), $instance['logo_location'], true ); ?>><?php _e( 'Top-Left', 'bns-cl' ); ?></option>
             </select>
         </p>
-    <?php }
+    <?php } /** End function - form */
 
 
     /**
@@ -336,16 +337,19 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 
         /** Scripts */
         wp_enqueue_script( 'BNS-Corner-Logo-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-scripts.js', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
-        if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-scripts.css' ) ) { // Only enqueue if available
+        /** Only enqueue if available */
+        if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-scripts.css' ) ) {
             wp_enqueue_style( 'BNS-Corner-Logo-Custom-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-scripts.css', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
-        }
+        } /** End if - is readable */
 
         /** Styles */
         wp_enqueue_style( 'BNS-Corner-Logo-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-style.css', array(), $bnscl_data['Version'], 'screen' );
-        if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-style.css' ) ) { // Only enqueue if available
+        /** Only enqueue if available */
+        if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-style.css' ) ) {
             wp_enqueue_style( 'BNS-Corner-Logo-Custom-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-style.css', array(), $bnscl_data['Version'], 'screen' );
-        }
-    }
+        } /** End if  - is readable */
+
+    } /** End function - bns corner logo scripts and styles */
 
 
     /**
@@ -359,4 +363,8 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
         register_widget( 'BNS_Corner_Logo_Widget' );
     } /** End function - load bnscl widget */
 
-}
+} /** End class */
+
+
+/** @var $bnscl - instantiate the class */
+$bnscl = new BNS_Corner_Logo_Widget();
