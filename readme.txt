@@ -4,7 +4,7 @@ Donate link: http://buynowshop.com/
 Tags: image, logo, multiple widgets, gravatar, multisite compatible, widget-only
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.8
+Stable tag: 1.8.1
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -61,7 +61,7 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 3. An image in the sidebar and an image "fixed" in the bottom-right corner showing multiple instances of the widget.
 
 == Other Notes ==
-  Copyright 2009-2012  Edward Caissie  (email : edward.caissie@gmail.com)
+  Copyright 2009-2013  Edward Caissie  (email : edward.caissie@gmail.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 2,
@@ -85,6 +85,11 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= 1.8.1 =
+* Release - February 21, 2013
+* Minor documentation updates
+* Revert: Removed `width: 100%` from `div.bns-logo a img`
+
 = 1.8 =
 * Release - February 2013
 * Address "smart-phone" screens being obfuscated by image

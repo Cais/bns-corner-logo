@@ -25,10 +25,14 @@
  * @date    November 21, 2012
  * Adjusted top position if user is logged-in
  *
- * @version 1.7.1
+ * @version 1.8
  * @date    January 27, 2013
  * Address "smart-phone" screens being obfuscated by image
  * Removed `width: 100%` from `div.bns-logo a img`
+ *
+ * @version 1.8.1
+ * @date    February 21, 2013
+ * Revert - Removed `width: 100%` from `div.bns-logo a img`
  */
 
 /** BNS Corner Logo CSS */
@@ -37,6 +41,7 @@ div.bns-logo .avatar { float: none; margin: 0; width: auto; }
 div.bns-logo a img {
     background: none;
     border: none;
+    width: 100%;
     text-decoration: none;
 }
 
