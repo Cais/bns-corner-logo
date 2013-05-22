@@ -3,8 +3,8 @@ Contributors: cais
 Donate link: http://buynowshop.com/
 Tags: image, logo, multiple widgets, gravatar, multisite compatible, widget-only
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable tag: 1.8.1
+Tested up to: 3.6
+Stable tag: 1.8.2
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -85,6 +85,11 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= 1.8.2 =
+* Release May 2013
+* Version compatibility update
+* Minor code formatting
+
 = 1.8.1 =
 * Release - February 21, 2013
 * Minor documentation updates

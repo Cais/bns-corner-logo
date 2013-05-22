@@ -3,7 +3,7 @@
 Plugin Name: BNS Corner Logo
 Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
 Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
-Version: 1.8.1
+Version: 1.8.2
 Text Domain: bns-cl
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
@@ -21,7 +21,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @link        http://buynowshop.com/plugins/bns-corner-logo/
  * @link        https://github.com/Cais/bns-corner-logo/
  * @link        http://wordpress.org/extend/plugins/bns-corner-logo/
- * @version     1.8
+ * @version     1.8.2
  * @author      Edward Caissie <edward.caissie@gmail.com>
  * @copyright   Copyright (c) 2009-2013, Edward Caissie
  *
@@ -49,6 +49,9 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @date    February 12, 2013
  * Removed `load_textdomain` as redundant
  * Move all code into class structure
+ *
+ * @version 1.8.2
+ * @date    May 21, 2013
  */
 
 class BNS_Corner_Logo_Widget extends WP_Widget {
@@ -94,7 +97,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
         add_action( 'widgets_init', array( $this, 'load_bnscl_widget' ) );
 
         /** Add scripts and style */
-        add_action('wp_enqueue_scripts', array( $this, 'scripts_and_styles') );
+        add_action( 'wp_enqueue_scripts', array( $this, 'scripts_and_styles') );
 
     } /** End function - bns corner logo widget */
 
@@ -114,7 +117,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
     function widget( $args, $instance ) {
         extract( $args );
         /** User-selected settings */
-        $title              = apply_filters('widget_title', $instance['title'] );
+        $title              = apply_filters( 'widget_title', $instance['title'] );
         $use_gravatar       = $instance['use_gravatar'];
         $gravatar_user_id   = $instance['gravatar_user_id'];
         $gravatar_size      = $instance['gravatar_size'];
@@ -146,7 +149,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                         $user_details = get_userdata( $gravatar_user_id );
                         /** @noinspection PhpUndefinedFieldInspection */
                         $user_email = $user_details->user_email;
-                        echo get_avatar( $user_email, $gravatar_size);
+                        echo get_avatar( $user_email, $gravatar_size );
                     } else { ?>
                         <img style="" alt="<?php echo $image_alt_text; ?>" src="<?php echo $image_url;?>" />
                     <?php } ?>
@@ -170,7 +173,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
                         $user_details = get_userdata( $gravatar_user_id );
                         /** @noinspection PhpUndefinedFieldInspection */
                         $user_email = $user_details->user_email;
-                        echo get_avatar( $user_email, $gravatar_size);
+                        echo get_avatar( $user_email, $gravatar_size );
                     } else { ?>
                         <img style="" alt="<?php echo $image_alt_text; ?>" src="<?php echo $image_url;?>" />
                     <?php } /** End if - use gravatar */ ?>
