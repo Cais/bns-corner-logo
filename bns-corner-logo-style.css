@@ -33,11 +33,25 @@
  * @version 1.8.1
  * @date    February 21, 2013
  * Revert - Removed `width: 100%` from `div.bns-logo a img`
+ *
+ * @version 1.8.2
+ * @date    May 21, 2013
+ * Optimization and formatting
  */
 
 /** BNS Corner Logo CSS */
-div.bns-logo { text-align: center; position: relative; z-index: 10000; }
-div.bns-logo .avatar { float: none; margin: 0; width: auto; }
+div.bns-logo {
+    text-align: center;
+    position: relative;
+    z-index: 10000;
+}
+
+div.bns-logo .avatar {
+    float: none;
+    margin: 0;
+    width: auto;
+}
+
 div.bns-logo a img {
     background: none;
     border: none;
@@ -52,12 +66,13 @@ div.bns-logo.fixed-top-right { position: fixed; top: 0; right: 0; }
 div.bns-logo.fixed-top-left { position: fixed; top: 0; left: 0; }
 
 /** Adjust top position if user is logged-in */
-.logged-in div.bns-logo.fixed-top-right { top: 28px; }
-.logged-in div.bns-logo.fixed-top-left { top: 28px; }
+.logged-in div.bns-logo.fixed-top-right,
+.logged-in div.bns-logo.fixed-top-left {
+    top: 28px;
+}
 
-/** Smartphones (portrait) ----------- */
-@media only screen
-and ( max-width : 320px ) {
-    /* Styles */
+/** Smartphones (portrait) */
+@media only screen and ( max-width : 320px ) {
+    /** Do not display logo */
     div.bns-logo { display: none; }
 }

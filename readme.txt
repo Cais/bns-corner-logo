@@ -88,6 +88,7 @@ Please stay current with your WordPress installation, your active theme, and you
 = 1.8.2 =
 * Release May 2013
 * Version compatibility update
+* CSS optimization and formatting
 * Minor code formatting
 
 = 1.8.1 =
