@@ -337,22 +337,28 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 *
 	 * Adds plugin stylesheet and allows for custom stylesheet to be added by end-user.
 	 *
-	 * @package BNS_Corner_Logo
-	 * @since   1.5
+	 * @package                BNS_Corner_Logo
+	 * @since                  1.5
 	 *
-	 * @uses    get_plugin_data
-	 * @uses    plugin_dir_url
-	 * @uses    plugin_dir_path
-	 * @uses    wp_enqueue_style
+	 * @uses    (CONSTANT)     WP_CONTENT_DIR
+	 * @uses                   content_url
+	 * @uses                   get_plugin_data
+	 * @uses                   plugin_dir_url
+	 * @uses                   plugin_dir_path
+	 * @uses                   wp_enqueue_style
 	 *
-	 * @version 1.7
-	 * @date    November 21, 2012
+	 * @version                1.7
+	 * @date                   November 21, 2012
 	 * Enqueued JavaScript 'bns-corner-logo-scripts.js'
 	 * Enqueued JavaScript 'bns-corner-logo-custom-scripts.css' if it exists
 	 *
-	 * @version 1.8
-	 * @date    February 13, 2013
+	 * @version                1.8
+	 * @date                   February 13, 2013
 	 * Renamed to `scripts_and_styles`
+	 *
+	 * @version                1.8.3
+	 * @date                   December 30, 2013
+	 * Added functional option to place `bns-corner-logo-custom-style.css` in the `/wp-content/` folder
 	 */
 	function scripts_and_styles() {
 		/** Call the wp-admin plugin code */
@@ -373,6 +379,10 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 		/** Only enqueue if available */
 		if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-style.css' ) ) {
 			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-style.css', array(), $bnscl_data['Version'], 'screen' );
+		}
+		/** End if  - is readable */
+		if ( is_readable( WP_CONTENT_DIR . '/bns-corner-logo-custom-style.css' ) ) {
+			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Style', content_url() . '/bns-corner-logo-custom-style.css', array(), $bnscl_data['Version'], 'screen' );
 		}
 		/** End if  - is readable */
 

@@ -88,6 +88,7 @@ Please stay current with your WordPress installation, your active theme, and you
 = 1.8.3 =
 * Released December 2013
 * Code reformatting to better reflect WordPress Coding Standards (see https://gist.github.com/Cais/8023722)
+* Added functional option to place `bns-corner-logo-custom-style.css` in the `/wp-content/` folder
 
 = 1.8.2 =
 * Release May 2013
