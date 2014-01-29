@@ -87,6 +87,8 @@ Please stay current with your WordPress installation, your active theme, and you
 == Changelog ==
 = 1.8.4 =
 * Released January 2014
+* Properly escape the alt image attribute
+* Update copyright year
 
 = 1.8.3 =
 * Released December 2013

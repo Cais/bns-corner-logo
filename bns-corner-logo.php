@@ -17,13 +17,13 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Widget to display a user selected image as a logo; or, used as a plugin that
  * displays the image fixed in one of the four corners of the display.
  *
- * @package     BNS_Corner_Logo
- * @link        http://buynowshop.com/plugins/bns-corner-logo/
- * @link        https://github.com/Cais/bns-corner-logo/
- * @link        http://wordpress.org/extend/plugins/bns-corner-logo/
- * @version     1.8.4
- * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2009-2014, Edward Caissie
+ * @package        BNS_Corner_Logo
+ * @link           http://buynowshop.com/plugins/bns-corner-logo/
+ * @link           https://github.com/Cais/bns-corner-logo/
+ * @link           http://wordpress.org/extend/plugins/bns-corner-logo/
+ * @version        1.8.4
+ * @author         Edward Caissie <edward.caissie@gmail.com>
+ * @copyright      Copyright (c) 2009-2014, Edward Caissie
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License version 2, as published by the
@@ -45,19 +45,19 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * The license for this software can also likely be found here:
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
- * @version     1.8
- * @date        February 12, 2013
+ * @version        1.8
+ * @date           February 12, 2013
  * Removed `load_textdomain` as redundant
  * Move all code into class structure
  *
- * @version     1.8.2
- * @date        May 21, 2013
+ * @version        1.8.2
+ * @date           May 21, 2013
  *
- * @version     1.8.3
- * @date        December 2013
+ * @version        1.8.3
+ * @date           December 2013
  *
- * @version		1.8.4
- * @date		January 29, 2014
+ * @version        1.8.4
+ * @date           January 29, 2014
  */
 class BNS_Corner_Logo_Widget extends WP_Widget {
 	/**
@@ -121,14 +121,19 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	/**
 	 * Override widget method of class WP_Widget
 	 *
-	 * @param   $args
-	 * @param   $instance
+	 * @param    $args
+	 * @param    $instance
 	 *
-	 * @uses    apply_filters
-	 * @uses    get_avatar
-	 * @uses    get_userdata
+	 * @uses       apply_filters
+	 * @uses       esc_attr
+	 * @uses       get_avatar
+	 * @uses       get_userdata
 	 *
-	 * @return  void
+	 * @return    void
+	 *
+	 * @version    1.8.4
+	 * @date       January 29, 2014
+	 * Properly escape the alt image attribute
 	 */
 	function widget( $args, $instance ) {
 		extract( $args );
@@ -167,12 +172,11 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 					<!-- Use FIRST Admin gravatar user ID = 1 as default -->
 					<?php if ( $use_gravatar ) {
 						$user_details = get_userdata( $gravatar_user_id );
-						/** @noinspection PhpUndefinedFieldInspection */
-						$user_email = $user_details->user_email;
+						$user_email   = $user_details->user_email;
 						echo get_avatar( $user_email, $gravatar_size );
 					} else {
 						?>
-						<img style="" alt="<?php echo $image_alt_text; ?>" src="<?php echo $image_url; ?>" />
+						<img alt="<?php echo esc_attr( $image_alt_text ); ?>" src="<?php echo $image_url; ?>" />
 					<?php } ?>
 				</a>
 			</div> <!-- .bns-logo -->
@@ -200,7 +204,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 						echo get_avatar( $user_email, $gravatar_size );
 					} else {
 						?>
-						<img style="" alt="<?php echo $image_alt_text; ?>" src="<?php echo $image_url; ?>" />
+						<img style="" alt="<?php echo esc_attr( $image_alt_text ); ?>" src="<?php echo $image_url; ?>" />
 					<?php } /** End if - use gravatar */ ?>
 				</a>
 			</div> <!-- .bns-logo -->
