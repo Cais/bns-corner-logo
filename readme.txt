@@ -85,6 +85,10 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= 1.8.5 =
+* Released January 2014
+* More sanitizing - `$image_url` and `$image_link`; thanks ScheRas
+
 = 1.8.4 =
 * Released January 2014
 * Properly escape the alt image attribute

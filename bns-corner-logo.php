@@ -3,7 +3,7 @@
 Plugin Name: BNS Corner Logo
 Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
 Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
-Version: 1.8.4
+Version: 1.8.5
 Text Domain: bns-cl
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
@@ -21,7 +21,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @link           http://buynowshop.com/plugins/bns-corner-logo/
  * @link           https://github.com/Cais/bns-corner-logo/
  * @link           http://wordpress.org/extend/plugins/bns-corner-logo/
- * @version        1.8.4
+ * @version        1.8.5
  * @author         Edward Caissie <edward.caissie@gmail.com>
  * @copyright      Copyright (c) 2009-2014, Edward Caissie
  *
@@ -58,6 +58,9 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
  * @version        1.8.4
  * @date           January 29, 2014
+ *
+ * @version        1.8.5
+ * @date           January 30, 2014
  */
 class BNS_Corner_Logo_Widget extends WP_Widget {
 	/**
@@ -134,6 +137,10 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @version    1.8.4
 	 * @date       January 29, 2014
 	 * Properly escape the alt image attribute
+	 *
+	 * @version    1.8.5
+	 * @date       January 30, 2015
+	 * More sanitizing - `$image_url` and `$image_link`; thanks ScheRas
 	 */
 	function widget( $args, $instance ) {
 		extract( $args );
@@ -168,7 +175,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 			<div class="bns-logo">
 				<a <?php if ( $new_window ) {
 					echo 'target="_blank"';
-				} ?> href="<?php echo $image_link; ?>">
+				} ?> href="<?php echo esc_url( $image_link ); ?>">
 					<!-- Use FIRST Admin gravatar user ID = 1 as default -->
 					<?php if ( $use_gravatar ) {
 						$user_details = get_userdata( $gravatar_user_id );
@@ -176,7 +183,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 						echo get_avatar( $user_email, $gravatar_size );
 					} else {
 						?>
-						<img alt="<?php echo esc_attr( $image_alt_text ); ?>" src="<?php echo $image_url; ?>" />
+						<img alt="<?php echo esc_attr( $image_alt_text ); ?>" src="<?php echo esc_url( $image_url ); ?>" />
 					<?php } ?>
 				</a>
 			</div> <!-- .bns-logo -->
@@ -195,7 +202,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 			<div class="bns-logo <?php echo $logo_position; ?>">
 				<a <?php if ( $new_window ) {
 					echo 'target="_blank"';
-				} ?> href="<?php echo $image_link; ?>">
+				} ?> href="<?php echo esc_url( $image_link ); ?>">
 					<!-- Use FIRST Admin gravatar user ID = 1 as default -->
 					<?php if ( $use_gravatar ) {
 						$user_details = get_userdata( $gravatar_user_id );
@@ -204,7 +211,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 						echo get_avatar( $user_email, $gravatar_size );
 					} else {
 						?>
-						<img style="" alt="<?php echo esc_attr( $image_alt_text ); ?>" src="<?php echo $image_url; ?>" />
+						<img alt="<?php echo esc_attr( $image_alt_text ); ?>" src="<?php echo esc_url( $image_url ); ?>" />
 					<?php } /** End if - use gravatar */ ?>
 				</a>
 			</div> <!-- .bns-logo -->
