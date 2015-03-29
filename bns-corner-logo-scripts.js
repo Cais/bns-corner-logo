@@ -1,7 +1,7 @@
 /**
  * This file is part of BNS Corner Logo.
  *
- * Copyright 2009-2014  Edward Caissie  (email : edward.caissie@gmail.com)
+ * Copyright 2009-2015  Edward Caissie  (email : edward.caissie@gmail.com)
  *
  * BNS Corner Logo is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License, version 2, as published
@@ -22,11 +22,11 @@
  *      Boston, MA  02110-1301  USA
  */
 
-jQuery(document).ready(function ($) {
+jQuery( document ).ready( function ( $ ) {
 	/** Note: $() will work as an alias for jQuery() inside of this function */
 	/**
-	 * Stop Gravatar's Hovercard effect by adding 'no-grav' class to the
+	 * Stop Gravatar Hovercard effect by adding 'no-grav' class to the
 	 * gravatar HTML image tag.
 	 */
-	$('div.bns-logo a img.avatar').addClass('no-grav');
-});
+	$( 'div.bns-logo a img.avatar' ).addClass( 'no-grav' );
+} );
