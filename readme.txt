@@ -91,6 +91,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * Minor code reformatting
 * Removed extraneous comments
 * Changed `textdomain` from `bns-cl` to the plugin slug `bns-corner-logo`
+* Added `BNS Corner Logo Update Message` hook/callback routine
 
 = 1.8.5 =
 * Released January 2014
@@ -208,7 +209,7 @@ Please stay current with your WordPress installation, your active theme, and you
 = 1.1.1 =
 * compatibility check for WP2.9 completed
 * increased the width of the option panel
-* beginning of code to implement gravatars included (but not complete or visually apparent)
+* beginning of code to implement Gravatar included (but not complete or visually apparent)
 
 = 1.1 =
 * added version checking using $wp_version
