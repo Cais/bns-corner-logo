@@ -90,6 +90,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * Update version, tested up to, copyright, etc.
 * Minor code reformatting
 * Removed extraneous comments
+* Changed `textdomain` from `bns-cl` to the plugin slug `bns-corner-logo`
 
 = 1.8.5 =
 * Released January 2014
