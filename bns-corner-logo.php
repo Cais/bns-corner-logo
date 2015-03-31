@@ -56,9 +56,17 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @package BNS_Corner_Logo
 	 * @since   0.1
 	 *
-	 * @uses    WP_Widget
+	 * @uses    (CONSTANT) WP_CONTENT_URL
+	 * @uses    (CLASS) WP_Widget
+	 * @uses    __
+	 * @uses    add_action
+	 * @uses    content_url
 	 *
 	 * @return  void
+	 *
+	 * @version 1.9
+	 * @date    March 31, 2015
+	 * Added `BNS_CUSTOM_PATH` and `BNS_CUSTOM_URL` constants
 	 */
 	function BNS_Corner_Logo_Widget() {
 		/** Widget settings */
@@ -88,6 +96,14 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 		$exit_message = __( 'BNS Corner Logo requires WordPress version 3.0 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>', 'bns-corner-logo' );
 		if ( version_compare( $wp_version, "3.0", "<" ) ) {
 			exit( $exit_message );
+		}
+
+		/** Define location for BNS plugin customizations */
+		if ( ! defined( 'BNS_CUSTOM_PATH' ) ) {
+			define( 'BNS_CUSTOM_PATH', WP_CONTENT_DIR . '/bns-customs/' );
+		}
+		if ( ! defined( 'BNS_CUSTOM_URL' ) ) {
+			define( 'BNS_CUSTOM_URL', content_url( '/bns-customs/' ) );
 		}
 
 		/** Add widget */
@@ -387,6 +403,10 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @version 1.8.3
 	 * @date    December 30, 2013
 	 * Added functional option to place `bns-corner-logo-custom-style.css` in the `/wp-content/` folder
+	 *
+	 * @version 1.9
+	 * @date    March 31, 2015
+	 * Corrected typo in custom JavaScript file name
 	 */
 	function scripts_and_styles() {
 		/** Call the wp-admin plugin code */
@@ -396,9 +416,10 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 
 		/** Scripts */
 		wp_enqueue_script( 'BNS-Corner-Logo-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-scripts.js', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
+
 		/** Only enqueue if available */
-		if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-scripts.css' ) ) {
-			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-scripts.css', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
+		if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-scripts.js' ) ) {
+			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-scripts.js', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
 		}
 
 		/** Styles */
