@@ -87,14 +87,14 @@ Please stay current with your WordPress installation, your active theme, and you
 == Changelog ==
 = 1.9 =
 * Released ...
-* Update version, tested up to, copyright, etc.
-* Minor code reformatting
-* Removed extraneous comments
-* Changed `textdomain` from `bns-cl` to the plugin slug `bns-corner-logo`
 * Added `BNS Corner Logo Update Message` hook/callback routine
 * Added `BNS_CUSTOM_PATH` and `BNS_CUSTOM_URL` constants
-* Corrected typo in custom JavaScript file name
 * Added calls to custom JavaScript and CSS files in the `/bns-customs/` folder
+* Changed `textdomain` from `bns-cl` to the plugin slug `bns-corner-logo`
+* Corrected typo in custom JavaScript file name
+* Minor code reformatting
+* Removed extraneous comments
+* Update version, tested up to, copyright, etc.
 
 = 1.8.5 =
 * Released January 2014
