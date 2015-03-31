@@ -391,22 +391,16 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @uses    plugin_dir_path
 	 * @uses    wp_enqueue_style
 	 *
-	 * @version 1.7
-	 * @date    November 21, 2012
-	 * Enqueued JavaScript 'bns-corner-logo-scripts.js'
-	 * Enqueued JavaScript 'bns-corner-logo-custom-scripts.css' if it exists
-	 *
-	 * @version 1.8
-	 * @date    February 13, 2013
-	 * Renamed to `scripts_and_styles`
-	 *
 	 * @version 1.8.3
 	 * @date    December 30, 2013
 	 * Added functional option to place `bns-corner-logo-custom-style.css` in the `/wp-content/` folder
 	 *
 	 * @version 1.9
 	 * @date    March 31, 2015
+	 * Added calls to custom JavaScript and CSS files in the `/bns-customs/` folder
 	 * Corrected typo in custom JavaScript file name
+	 *
+	 * @todo - Remove calls to custom files not found in the /bns-customs/ folder (1.9+)
 	 */
 	function scripts_and_styles() {
 		/** Call the wp-admin plugin code */
@@ -422,6 +416,11 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-scripts.js', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
 		}
 
+		/** For custom stylesheets in the /wp-content/bns-custom/ folder */
+		if ( is_readable( BNS_CUSTOM_PATH . 'bns-corner-logo-custom-scripts.js' ) ) {
+			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Script', BNS_CUSTOM_URL . 'bns-corner-logo-custom-scripts.js', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
+		}
+
 		/** Styles */
 		wp_enqueue_style( 'BNS-Corner-Logo-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-style.css', array(), $bnscl_data['Version'], 'screen' );
 
@@ -431,6 +430,11 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 		}
 		if ( is_readable( WP_CONTENT_DIR . '/bns-corner-logo-custom-style.css' ) ) {
 			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Style', content_url() . '/bns-corner-logo-custom-style.css', array(), $bnscl_data['Version'], 'screen' );
+		}
+
+		/** For custom stylesheets in the /wp-content/bns-custom/ folder */
+		if ( is_readable( BNS_CUSTOM_PATH . 'bnsft-custom-style.css' ) ) {
+			wp_enqueue_style( 'BNSFT-Custom-Style', BNS_CUSTOM_URL . 'bnsft-custom-style.css', array(), $bnsft_data['Version'], 'screen' );
 		}
 
 	}

@@ -94,6 +94,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * Added `BNS Corner Logo Update Message` hook/callback routine
 * Added `BNS_CUSTOM_PATH` and `BNS_CUSTOM_URL` constants
 * Corrected typo in custom JavaScript file name
+* Added calls to custom JavaScript and CSS files in the `/bns-customs/` folder
 
 = 1.8.5 =
 * Released January 2014
