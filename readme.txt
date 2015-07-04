@@ -85,8 +85,12 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
-= 1.9 =
+= 2.0 =
 * Released ...
+* Updated to use PHP5 constructor objects
+
+= 1.9 =
+* Released March 2015
 * Added `BNS Corner Logo Update Message` hook/callback routine
 * Added `BNS_CUSTOM_PATH` and `BNS_CUSTOM_URL` constants
 * Added calls to custom JavaScript and CSS files in the `/bns-customs/` folder

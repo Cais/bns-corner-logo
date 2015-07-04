@@ -3,7 +3,7 @@
 Plugin Name: BNS Corner Logo
 Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
 Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
-Version: 1.9
+Version: 2.0
 Text Domain: bns-corner-logo
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
@@ -21,7 +21,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @link        http://buynowshop.com/plugins/bns-corner-logo/
  * @link        https://github.com/Cais/bns-corner-logo/
  * @link        https://wordpress.org/plugins/bns-corner-logo/
- * @version     1.9
+ * @version     2.0
  * @author      Edward Caissie <edward.caissie@gmail.com>
  * @copyright   Copyright (c) 2009-2015, Edward Caissie
  *
@@ -45,8 +45,8 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * The license for this software can also likely be found here:
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
- * @version     1.9
- * @date        March 2015
+ * @version     2.0
+ * @date        June 2015
  */
 class BNS_Corner_Logo_Widget extends WP_Widget {
 	/**
@@ -62,22 +62,27 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @uses    add_action
 	 * @uses    content_url
 	 *
-	 * @return  void
-	 *
 	 * @version 1.9
 	 * @date    March 31, 2015
 	 * Added `BNS_CUSTOM_PATH` and `BNS_CUSTOM_URL` constants
+	 *
+	 * @version 2.0
+	 * @date    July 4, 2015
+	 * Renamed to use `__construct` as the constructor method
 	 */
-	function BNS_Corner_Logo_Widget() {
+	function __construct() {
+
 		/** Widget settings */
 		$widget_ops = array(
 			'classname'   => 'bns-corner-logo',
 			'description' => __( 'Widget to display a logo; or, used as a plugin displays image fixed in one of the four corners.', 'bns-corner-logo' )
 		);
+
 		/** Widget control settings */
 		$control_ops = array( 'width' => 200, 'id_base' => 'bns-corner-logo' );
+
 		/** Create the widget */
-		$this->WP_Widget( 'bns-corner-logo', 'BNS Corner Logo', $widget_ops, $control_ops );
+		parent::__construct( 'bns-corner-logo', 'BNS Corner Logo', $widget_ops, $control_ops );
 
 		/**
 		 * Check installed WordPress version for compatibility
@@ -400,7 +405,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * Added calls to custom JavaScript and CSS files in the `/bns-customs/` folder
 	 * Corrected typo in custom JavaScript file name
 	 *
-	 * @todo - Remove calls to custom files not found in the /bns-customs/ folder (1.9+)
+	 * @todo    - Remove calls to custom files not found in the /bns-customs/ folder (1.9+)
 	 */
 	function scripts_and_styles() {
 		/** Call the wp-admin plugin code */
