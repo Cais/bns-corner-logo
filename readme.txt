@@ -3,8 +3,8 @@ Contributors: cais
 Donate link: http://buynowshop.com/
 Tags: image, logo, multiple widgets, gravatar, multisite compatible, widget-only
 Requires at least: 3.0
-Tested up to: 4.2
-Stable tag: 1.9
+Tested up to: 4.2.2
+Stable tag: 2.0
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -87,6 +87,7 @@ Please stay current with your WordPress installation, your active theme, and you
 == Changelog ==
 = 2.0 =
 * Released ...
+* Added Mallory-Everest filter hook `bnscl_image_tag_alt_title`
 * Updated to use PHP5 constructor objects
 
 = 1.9 =

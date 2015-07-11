@@ -145,8 +145,13 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @version 1.8.5
 	 * @date    January 30, 2015
 	 * More sanitizing - `$image_url` and `$image_link`; thanks ScheRas
+	 *
+	 * @version 2.0
+	 * @date    July 10, 2015
+	 * Added Mallory-Everest filter hook `bnscl_image_tag_alt_title`
 	 */
 	function widget( $args, $instance ) {
+
 		extract( $args );
 		/** User-selected settings */
 		$title            = apply_filters( 'widget_title', $instance['title'] );
@@ -173,8 +178,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 				echo $before_title . $title . $after_title;
 			}
 
-			/** Display image based on widget settings */
-			?>
+			/** Display image based on widget settings */ ?>
 			<div class="bns-logo">
 				<a <?php if ( $new_window ) {
 					echo 'target="_blank"';
@@ -185,13 +189,13 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 						$user_email   = $user_details->user_email;
 						echo get_avatar( $user_email, $gravatar_size );
 					} else {
-						?>
-						<img alt="<?php echo esc_attr( $image_alt_text ); ?>" src="<?php echo esc_url( $image_url ); ?>" />
-					<?php } ?>
+						echo $image_tag = '<img ' . apply_filters( 'bnscl_image_tag_alt_title', 'alt="' ) . esc_attr( $image_alt_text ) . '" src="' . esc_url( $image_url ) . '" />';
+					} ?>
 				</a>
 			</div><!-- .bns-logo -->
-		<?php
-		} else {
+
+		<?php } else {
+
 			if ( $logo_location == "Bottom-Right" ) {
 				$logo_position = 'fixed-bottom-right';
 			} elseif ( $logo_location == "Bottom-Left" ) {
@@ -200,8 +204,8 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 				$logo_position = 'fixed-top-right';
 			} elseif ( $logo_location == "Top-Left" ) {
 				$logo_position = 'fixed-top-left';
-			}
-			?>
+			} ?>
+
 			<div class="bns-logo <?php echo $logo_position; ?>">
 				<a <?php if ( $new_window ) {
 					echo 'target="_blank"';
@@ -209,17 +213,14 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 					<!-- Use FIRST Admin gravatar user ID = 1 as default -->
 					<?php if ( $use_gravatar ) {
 						$user_details = get_userdata( $gravatar_user_id );
-						/** @noinspection PhpUndefinedFieldInspection */
-						$user_email = $user_details->user_email;
+						$user_email   = $user_details->user_email;
 						echo get_avatar( $user_email, $gravatar_size );
 					} else {
-						?>
-						<img alt="<?php echo esc_attr( $image_alt_text ); ?>" src="<?php echo esc_url( $image_url ); ?>" />
-					<?php } ?>
+						echo $image_tag = '<img ' . apply_filters( 'bnscl_image_tag_alt_title', 'alt="' ) . esc_attr( $image_alt_text ) . '" src="' . esc_url( $image_url ) . '" />';
+					} ?>
 				</a>
 			</div><!-- .bns-logo -->
-		<?php
-		}
+		<?php }
 		/** End - Display image based on widget settings */
 
 		/** After widget (defined by themes) */
@@ -240,6 +241,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @return  array - widget options and settings
 	 */
 	function update( $new_instance, $old_instance ) {
+
 		$instance = $old_instance;
 		/** Strip tags (if needed) and update the widget settings */
 		$instance['title']            = strip_tags( $new_instance['title'] );
@@ -278,6 +280,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * Added i18n support to position drop-down in widget control panel
 	 */
 	function form( $instance ) {
+
 		/** Set up some default widget settings */
 		$defaults = array(
 			'title'            => __( 'My Logo Image', 'bns-corner-logo' ),
@@ -292,6 +295,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 			'logo_location'    => 'Bottom-Right'
 		);
 		$instance = wp_parse_args( ( array ) $instance, $defaults ); ?>
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bns-corner-logo' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
@@ -377,8 +381,8 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 				<option <?php selected( __( 'Top-Left', 'bns-corner-logo' ), $instance['logo_location'], true ); ?>><?php _e( 'Top-Left', 'bns-corner-logo' ); ?></option>
 			</select>
 		</p>
-	<?php
-	}
+
+	<?php }
 
 
 	/**
@@ -408,6 +412,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @todo    - Remove calls to custom files not found in the /bns-customs/ folder (1.9+)
 	 */
 	function scripts_and_styles() {
+
 		/** Call the wp-admin plugin code */
 		require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 		/** @var $bnscl_data - holds the plugin header data */
@@ -455,7 +460,6 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	function load_bnscl_widget() {
 		register_widget( 'BNS_Corner_Logo_Widget' );
 	}
-
 
 }
 
