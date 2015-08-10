@@ -46,7 +46,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
  * @version     2.0
- * @date        June 2015
+ * @date        August 2015
  */
 class BNS_Corner_Logo_Widget extends WP_Widget {
 	/**
