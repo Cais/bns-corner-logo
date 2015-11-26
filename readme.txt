@@ -3,8 +3,8 @@ Contributors: cais
 Donate link: http://buynowshop.com/
 Tags: image, logo, multiple widgets, gravatar, multisite compatible, widget-only
 Requires at least: 3.0
-Tested up to: 4.3
-Stable tag: 2.0
+Tested up to: 4.4
+Stable tag: 2.1
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -85,6 +85,12 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= 2.1 =
+* Released November 2015
+* Changed to singleton style structure
+* Moved `update_method` function into class as method
+* Re-wrote comaptibility message to be more i18n compatible
+
 = 2.0 =
 * Released August 2015
 * Added Mallory-Everest filter hook `bnscl_image_tag_alt_title`
