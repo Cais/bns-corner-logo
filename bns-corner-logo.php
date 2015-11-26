@@ -124,7 +124,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 		 *
 		 * @version     2.1
 		 * @date        November 26, 2015
-		 * Re-written (again) to be more i18n compatible
+		 * Re-wrote (again) to be more i18n compatible
 		 */
 		global $wp_version;
 		$exit_message = __( 'BNS Corner Logo requires WordPress version 3.0 or newer.', 'bns-corner-logo' );
@@ -158,6 +158,9 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 			$this,
 			'update_message'
 		) );
+
+		/** Add Plugin Row Meta details */
+		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), 10, 2 );
 
 	}
 
@@ -603,6 +606,42 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 		/** End if - transient check */
 
 		echo $upgrade_notice;
+
+	}
+
+
+	/**
+	 * BNSCL Plugin Meta
+	 * Adds additional links to plugin meta links
+	 *
+	 * @package    BNS_Corner_logo
+	 * @since      2.1
+	 *
+	 * @uses       __
+	 * @uses       plugin_basename
+	 *
+	 * @param   $links
+	 * @param   $file
+	 *
+	 * @return  array $links
+	 */
+	function plugin_meta( $links, $file ) {
+
+		$plugin_file = plugin_basename( __FILE__ );
+
+		if ( $file == $plugin_file ) {
+
+			$links = array_merge(
+					$links, array(
+							'fork_link'    => '<a href="https://github.com/Cais/BNS-Corner-Logo">' . __( 'Fork on GitHub', 'bns-corner-logo' ) . '</a>',
+							'wish_link'    => '<a href="http://www.amazon.ca/registry/wishlist/2NNNE1PAQIRUL">' . __( 'Grant a wish?', 'bns-corner-logo' ) . '</a>',
+							'support_link' => '<a href="http://wordpress.org/support/plugin/bns-corner-logo">' . __( 'WordPress Support Forums', 'bns-corner-logo' ) . '</a>'
+					)
+			);
+
+		}
+
+		return $links;
 
 	}
 

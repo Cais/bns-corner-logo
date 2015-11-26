@@ -87,6 +87,7 @@ Please stay current with your WordPress installation, your active theme, and you
 == Changelog ==
 = 2.1 =
 * Released November 2015
+* Added Plugin Row Meta details
 * Changed to singleton style structure
 * Moved `update_method` function into class as method
 * Re-wrote comaptibility message to be more i18n compatible
