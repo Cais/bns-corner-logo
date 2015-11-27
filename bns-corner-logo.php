@@ -160,14 +160,16 @@ class BNS_Corner_Logo extends WP_Widget {
 	 *
 	 * @uses        BNS_Corner_Logo::plugin_data
 	 * @uses        __
+	 * @uses        _x
 	 * @uses        deactivate_plugins
 	 * @uses        get_bloginfo
 	 */
 	function install() {
 
-		$plugin_data = $this->plugin_data();
+		$plugin_data         = $this->plugin_data();
+		$version_requirement = _x( '3.0', 'WordPress version number', 'bns-corner-logo' );
 
-		$exit_message = sprintf( __( '%1$s requires WordPress version 3.0 or newer.', 'bns-corner-logo' ), $plugin_data['Name'] );
+		$exit_message = sprintf( __( '%1$s requires WordPress version %2$s or newer.', 'bns-corner-logo' ), $plugin_data['Name'], $version_requirement );
 		$exit_message .= '<br />';
 		$exit_message .= sprintf( '<a href="http://codex.wordpress.org/Upgrading_WordPress" target="_blank">%1$s</a>', __( 'Please Update!', 'bns-corner-logo' ) );
 
@@ -652,6 +654,7 @@ class BNS_Corner_Logo extends WP_Widget {
 
 	/**
 	 * BNSCL Plugin Meta
+	 *
 	 * Adds additional links to plugin meta links
 	 *
 	 * @package    BNS_Corner_logo
