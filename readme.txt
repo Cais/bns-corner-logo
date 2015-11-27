@@ -92,7 +92,8 @@ Please stay current with your WordPress installation, your active theme, and you
 * Changed to singleton style structure
 * Moved compatibility check to be parsed first via `register_activation_hook`
 * Moved `update_method` function into class as method
-* Re-wrote comaptibility message to be more i18n compatible
+* Moved `plugin_data` into its own method and modified variable used
+* Re-wrote compatibility message to be more i18n compatible
 
 = 2.0 =
 * Released August 2015

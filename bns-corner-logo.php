@@ -49,7 +49,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @date        November 2015
  * Changed to singleton style structure
  */
-class BNS_Corner_Logo_Widget extends WP_Widget {
+class BNS_Corner_Logo extends WP_Widget {
 
 	private static $instance = null;
 
@@ -75,7 +75,8 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	}
 
 	/**
-	 * BNS Corner Logo Widget
+	 * BNS Corner Logo
+	 *
 	 * Used to extend WP_Widget class
 	 *
 	 * @package BNS_Corner_Logo
@@ -152,29 +153,54 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * Check installed WordPress version for compatibility
 	 *
 	 * @package     BNS_Corner_Logo
-	 * @since       1.0
+	 * @since       2.1
+	 * @date        November 27, 2015
+	 *
 	 * @internal    Version 3.0 being used in reference to home_url()
 	 *
+	 * @uses        BNS_Corner_Logo::plugin_data
 	 * @uses        __
 	 * @uses        deactivate_plugins
 	 * @uses        get_bloginfo
-	 *
-	 * @version     2.1
-	 * @date        November 26, 2015
-	 * Re-wrote (again) to be more i18n compatible
 	 */
 	function install() {
 
-		$exit_message = __( 'BNS Corner Logo requires WordPress version 3.0 or newer.', 'bns-corner-logo' );
-		$exit_message .= '<br />';
-		$exit_message .= sprintf( '<a href="http://codex.wordpress.org/Upgrading_WordPress">%1$s</a>', __( 'Please Update!', 'bns-corner-logo' ) );
+		$plugin_data = $this->plugin_data();
 
-		if ( version_compare( get_bloginfo( 'version' ), '5.0', '<' ) ) {
+		$exit_message = sprintf( __( '%1$s requires WordPress version 3.0 or newer.', 'bns-corner-logo' ), $plugin_data['Name'] );
+		$exit_message .= '<br />';
+		$exit_message .= sprintf( '<a href="http://codex.wordpress.org/Upgrading_WordPress" target="_blank">%1$s</a>', __( 'Please Update!', 'bns-corner-logo' ) );
+
+		if ( version_compare( get_bloginfo( 'version' ), '3.0', '<' ) ) {
 
 			deactivate_plugins( basename( __FILE__ ) );
 			exit( $exit_message );
 
 		}
+
+	}
+
+
+	/**
+	 * Plugin Data
+	 *
+	 * Returns the plugin header data as an array
+	 *
+	 * @package    BNS_Corner_Logo
+	 * @since      2.1
+	 *
+	 * @uses       get_plugin_data
+	 *
+	 * @return array
+	 */
+	function plugin_data() {
+
+		/** Call the wp-admin plugin code */
+		require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+		/** @var $plugin_data - holds the plugin header data */
+		$plugin_data = get_plugin_data( __FILE__ );
+
+		return $plugin_data;
 
 	}
 
@@ -448,8 +474,8 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @since   1.5
 	 *
 	 * @uses    (CONSTANT) WP_CONTENT_DIR
+	 * @uses    BNS_Corner_Logo::plugin_data
 	 * @uses    content_url
-	 * @uses    get_plugin_data
 	 * @uses    plugin_dir_url
 	 * @uses    plugin_dir_path
 	 * @uses    wp_enqueue_style
@@ -462,36 +488,38 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @date    March 31, 2015
 	 * Added calls to custom JavaScript and CSS files in the `/bns-customs/` folder
 	 * Corrected typo in custom JavaScript file name
+	 *
+	 * @version 2.1
+	 * @date    November 27, 2015
+	 * Moved `plugin_data` into its own method and modified variable used
 	 */
 	function scripts_and_styles() {
 
-		/** Call the wp-admin plugin code */
-		require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-		/** @var $bnscl_data - holds the plugin header data */
-		$bnscl_data = get_plugin_data( __FILE__ );
+		/** @var array $plugin_data - get the plugin header data */
+		$plugin_data = $this->plugin_data();
 
 		/** Scripts */
-		wp_enqueue_script( 'BNS-Corner-Logo-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-scripts.js', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
+		wp_enqueue_script( 'BNS-Corner-Logo-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-scripts.js', array( 'jquery' ), $plugin_data['Version'], 'screen' );
 
 		/** Only enqueue if available */
 		if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-scripts.js' ) ) {
-			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-scripts.js', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
+			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Script', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-scripts.js', array( 'jquery' ), $plugin_data['Version'], 'screen' );
 		}
 
 		/** For custom stylesheets in the /wp-content/bns-custom/ folder */
 		if ( is_readable( BNS_CUSTOM_PATH . 'bns-corner-logo-custom-scripts.js' ) ) {
-			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Script', BNS_CUSTOM_URL . 'bns-corner-logo-custom-scripts.js', array( 'jquery' ), $bnscl_data['Version'], 'screen' );
+			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Script', BNS_CUSTOM_URL . 'bns-corner-logo-custom-scripts.js', array( 'jquery' ), $plugin_data['Version'], 'screen' );
 		}
 
 		/** Styles */
-		wp_enqueue_style( 'BNS-Corner-Logo-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-style.css', array(), $bnscl_data['Version'], 'screen' );
+		wp_enqueue_style( 'BNS-Corner-Logo-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-style.css', array(), $plugin_data['Version'], 'screen' );
 
 		/** Only enqueue if available */
 		if ( is_readable( plugin_dir_path( __FILE__ ) . 'bns-corner-logo-custom-style.css' ) ) {
-			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-style.css', array(), $bnscl_data['Version'], 'screen' );
+			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Style', plugin_dir_url( __FILE__ ) . 'bns-corner-logo-custom-style.css', array(), $plugin_data['Version'], 'screen' );
 		}
 		if ( is_readable( WP_CONTENT_DIR . '/bns-corner-logo-custom-style.css' ) ) {
-			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Style', content_url() . '/bns-corner-logo-custom-style.css', array(), $bnscl_data['Version'], 'screen' );
+			wp_enqueue_style( 'BNS-Corner-Logo-Custom-Style', content_url() . '/bns-corner-logo-custom-style.css', array(), $plugin_data['Version'], 'screen' );
 		}
 
 		/** For custom stylesheets in the /wp-content/bns-custom/ folder */
@@ -666,11 +694,11 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @return  void
 	 */
 	function load_bnscl_widget() {
-		register_widget( 'BNS_Corner_Logo_Widget' );
+		register_widget( 'BNS_Corner_Logo' );
 	}
 
 }
 
 
 /** @var $bnscl - instantiate the class */
-$bnscl = new BNS_Corner_Logo_Widget();
+$bnscl = new BNS_Corner_Logo();
