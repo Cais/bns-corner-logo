@@ -88,7 +88,9 @@ Please stay current with your WordPress installation, your active theme, and you
 = 2.1 =
 * Released November 2015
 * Added Plugin Row Meta details
+* Added `install` method as part of version compatibility check
 * Changed to singleton style structure
+* Moved compatibility check to be parsed first via `register_activation_hook`
 * Moved `update_method` function into class as method
 * Re-wrote comaptibility message to be more i18n compatible
 

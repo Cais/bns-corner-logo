@@ -86,6 +86,7 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @uses    __
 	 * @uses    add_action
 	 * @uses    content_url
+	 * @uses    register_activation_hook
 	 *
 	 * @version 1.9
 	 * @date    March 31, 2015
@@ -97,9 +98,12 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 *
 	 * @version 2.1
 	 * @date    November 26, 2015
+	 * Moved compatibility check to be parsed first via `register_activation_hook`
 	 * Moved `update_message` function into class a method call
 	 */
 	function __construct() {
+
+		register_activation_hook( __FILE__, array( $this, 'install' ) );
 
 		/** Widget settings */
 		$widget_ops = array(
@@ -112,27 +116,6 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 
 		/** Create the widget */
 		parent::__construct( 'bns-corner-logo', 'BNS Corner Logo', $widget_ops, $control_ops );
-
-		/**
-		 * Check installed WordPress version for compatibility
-		 *
-		 * @package     BNS_Corner_Logo
-		 * @since       1.0
-		 * @internal    Version 3.0 being used in reference to home_url()
-		 *
-		 * @uses        (GLOBAL) wp_version
-		 *
-		 * @version     2.1
-		 * @date        November 26, 2015
-		 * Re-wrote (again) to be more i18n compatible
-		 */
-		global $wp_version;
-		$exit_message = __( 'BNS Corner Logo requires WordPress version 3.0 or newer.', 'bns-corner-logo' );
-		$exit_message .= '<br />';
-		$exit_message .= sprintf( '<a href="http://codex.wordpress.org/Upgrading_WordPress">%1$s</a>', __( 'Please Update!', 'bns-corner-logo' ) );
-		if ( version_compare( $wp_version, "3.0", "<" ) ) {
-			exit( $exit_message );
-		}
 
 		/** Define location for BNS plugin customizations */
 		if ( ! defined( 'BNS_CUSTOM_PATH' ) ) {
@@ -161,6 +144,37 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 
 		/** Add Plugin Row Meta details */
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), 10, 2 );
+
+	}
+
+
+	/**
+	 * Check installed WordPress version for compatibility
+	 *
+	 * @package     BNS_Corner_Logo
+	 * @since       1.0
+	 * @internal    Version 3.0 being used in reference to home_url()
+	 *
+	 * @uses        __
+	 * @uses        deactivate_plugins
+	 * @uses        get_bloginfo
+	 *
+	 * @version     2.1
+	 * @date        November 26, 2015
+	 * Re-wrote (again) to be more i18n compatible
+	 */
+	function install() {
+
+		$exit_message = __( 'BNS Corner Logo requires WordPress version 3.0 or newer.', 'bns-corner-logo' );
+		$exit_message .= '<br />';
+		$exit_message .= sprintf( '<a href="http://codex.wordpress.org/Upgrading_WordPress">%1$s</a>', __( 'Please Update!', 'bns-corner-logo' ) );
+
+		if ( version_compare( get_bloginfo( 'version' ), '5.0', '<' ) ) {
+
+			deactivate_plugins( basename( __FILE__ ) );
+			exit( $exit_message );
+
+		}
 
 	}
 
@@ -448,8 +462,6 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 	 * @date    March 31, 2015
 	 * Added calls to custom JavaScript and CSS files in the `/bns-customs/` folder
 	 * Corrected typo in custom JavaScript file name
-	 *
-	 * @todo    - Remove calls to custom files not found in the /bns-customs/ folder (1.9+)
 	 */
 	function scripts_and_styles() {
 
@@ -632,11 +644,11 @@ class BNS_Corner_Logo_Widget extends WP_Widget {
 		if ( $file == $plugin_file ) {
 
 			$links = array_merge(
-					$links, array(
-							'fork_link'    => '<a href="https://github.com/Cais/BNS-Corner-Logo">' . __( 'Fork on GitHub', 'bns-corner-logo' ) . '</a>',
-							'wish_link'    => '<a href="http://www.amazon.ca/registry/wishlist/2NNNE1PAQIRUL">' . __( 'Grant a wish?', 'bns-corner-logo' ) . '</a>',
-							'support_link' => '<a href="http://wordpress.org/support/plugin/bns-corner-logo">' . __( 'WordPress Support Forums', 'bns-corner-logo' ) . '</a>'
-					)
+				$links, array(
+					'fork_link'    => '<a href="https://github.com/Cais/BNS-Corner-Logo">' . __( 'Fork on GitHub', 'bns-corner-logo' ) . '</a>',
+					'wish_link'    => '<a href="http://www.amazon.ca/registry/wishlist/2NNNE1PAQIRUL">' . __( 'Grant a wish?', 'bns-corner-logo' ) . '</a>',
+					'support_link' => '<a href="http://wordpress.org/support/plugin/bns-corner-logo">' . __( 'WordPress Support Forums', 'bns-corner-logo' ) . '</a>'
+				)
 			);
 
 		}
