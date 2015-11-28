@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BNS Corner Logo\n"
-"POT-Creation-Date: 2015-11-27 15:48-0500\n"
-"PO-Revision-Date: 2015-11-27 15:48-0500\n"
+"POT-Creation-Date: 2015-11-27 20:23-0500\n"
+"PO-Revision-Date: 2015-11-27 20:24-0500\n"
 "Last-Translator: Edward Caissie <edward.caissie@gmail.com>\n"
 "Language-Team: Edward Caissie <edward.caissie@gmail.com>\n"
 "Language: en_CA\n"
@@ -25,112 +25,111 @@ msgid ""
 "Widget to display a logo; or, used as a plugin displays image fixed in one "
 "of the four corners."
 msgstr ""
+"Widget to display a logo; or, used as a plugin displays image fixed in one "
+"of the four corners."
 
-#: bns-corner-logo.php:172
-msgctxt "WordPress version number"
-msgid "5.0"
-msgstr "4.8"
-
-#: bns-corner-logo.php:174
+#: bns-corner-logo.php:173
 #, php-format
 msgid "%1$s requires WordPress version %2$s or newer."
-msgstr ""
+msgstr "%1$s requires WordPress version %2$s or newer."
 
-#: bns-corner-logo.php:176
+#: bns-corner-logo.php:175
 msgid "Please Update!"
-msgstr ""
+msgstr "Please Update!"
 
-#: bns-corner-logo.php:370
+#: bns-corner-logo.php:369
 msgid "My Logo Image"
-msgstr ""
+msgstr "My Logo Image"
 
-#: bns-corner-logo.php:384
+#: bns-corner-logo.php:383
 msgid "Title:"
-msgstr ""
+msgstr "Title:"
 
-#: bns-corner-logo.php:395
+#: bns-corner-logo.php:394
 #, php-format
 msgid "Use your %1$s image?"
-msgstr ""
+msgstr "Use your %1$s image?"
 
-#: bns-corner-logo.php:400
+#: bns-corner-logo.php:399
 msgid "Set Gravatar by User ID Number"
-msgstr ""
+msgstr "Set Gravatar by User ID Number"
 
-#: bns-corner-logo.php:408
+#: bns-corner-logo.php:407
 msgid "Gravatar size in pixels:"
-msgstr ""
+msgstr "Gravatar size in pixels:"
 
-#: bns-corner-logo.php:417
+#: bns-corner-logo.php:416
 msgid "URL of Image:"
-msgstr ""
+msgstr "URL of Image:"
 
-#: bns-corner-logo.php:425
+#: bns-corner-logo.php:424
 msgid "ALT text of Image:"
-msgstr ""
+msgstr "ALT text of Image:"
 
-#: bns-corner-logo.php:433
+#: bns-corner-logo.php:432
 msgid "URL to follow:"
-msgstr ""
+msgstr "URL to follow:"
 
-#: bns-corner-logo.php:444
+#: bns-corner-logo.php:443
 msgid "Open \"URL to follow\" in new window?"
-msgstr ""
+msgstr "Open “URL to follow” in new window?"
 
-#: bns-corner-logo.php:454
+#: bns-corner-logo.php:453
 msgid "Use like a Plugin?"
-msgstr ""
+msgstr "Use like a Plugin?"
 
-#: bns-corner-logo.php:459
+#: bns-corner-logo.php:458
 msgid "Plugin Logo Location:"
-msgstr ""
+msgstr "Plugin Logo Location:"
+
+#: bns-corner-logo.php:461
+msgid "Bottom-Right"
+msgstr "Bottom-Right"
 
 #: bns-corner-logo.php:462
-msgid "Bottom-Right"
-msgstr ""
+msgid "Bottom-Left"
+msgstr "Bottom-Left"
 
 #: bns-corner-logo.php:463
-msgid "Bottom-Left"
-msgstr ""
+msgid "Top-Right"
+msgstr "Top-Right"
 
 #: bns-corner-logo.php:464
-msgid "Top-Right"
-msgstr ""
-
-#: bns-corner-logo.php:465
 msgid "Top-Left"
-msgstr ""
+msgstr "Top Menu"
+
+#: bns-corner-logo.php:680
+msgid "Fork on GitHub"
+msgstr "Fork on GitHub"
 
 #: bns-corner-logo.php:681
-msgid "Fork on GitHub"
-msgstr ""
+msgid "Grant a wish?"
+msgstr "Grant a wish?"
 
 #: bns-corner-logo.php:682
-msgid "Grant a wish?"
-msgstr ""
-
-#: bns-corner-logo.php:683
 msgid "WordPress Support Forums"
-msgstr ""
+msgstr "WordPress Support Forums"
 
 #. Plugin Name of the plugin/theme
 msgid "BNS Corner Logo"
-msgstr ""
+msgstr "BNS Corner Logo"
 
 #. Plugin URI of the plugin/theme
 msgid "http://buynowshop.com/plugins/bns-corner-logo/"
-msgstr ""
+msgstr "http://buynowshop.com/plugins/bns-corner-logo/"
 
 #. Description of the plugin/theme
 msgid ""
 "Widget to display a user selected image as a logo; or, used as a plugin that "
 "displays the image fixed in one of the four corners of the display."
 msgstr ""
+"Widget to display a user selected image as a logo; or, used as a plugin that "
+"displays the image fixed in one of the four corners of the display."
 
 #. Author of the plugin/theme
 msgid "Edward Caissie"
-msgstr ""
+msgstr "Edward Caissie"
 
 #. Author URI of the plugin/theme
 msgid "http://edwardcaissie.com/"
-msgstr ""
+msgstr "http://edwardcaissie.com/"
