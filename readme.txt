@@ -90,6 +90,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * Added Plugin Row Meta details
 * Added `install` method as part of version compatibility check
 * Added `load_plugin_textdomain` call
+* Added English (Canada) translation files, and default translation `.pot` file
 * Changed to singleton style structure
 * Moved compatibility check to be parsed first via `register_activation_hook`
 * Moved `update_method` function into class as method
