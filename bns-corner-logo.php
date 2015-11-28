@@ -62,7 +62,7 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @since   2.1
 	 * @date    November 26, 2015
 	 *
-	 * @return null|BNS_Support_Widget
+	 * @return null|BNS_Corner_Logo
 	 */
 	public static function create_instance() {
 
@@ -105,6 +105,8 @@ class BNS_Corner_Logo extends WP_Widget {
 	function __construct() {
 
 		register_activation_hook( __FILE__, array( $this, 'install' ) );
+
+		load_plugin_textdomain( 'bns-corner-logo' );
 
 		/** Widget settings */
 		$widget_ops = array(
@@ -160,20 +162,19 @@ class BNS_Corner_Logo extends WP_Widget {
 	 *
 	 * @uses        BNS_Corner_Logo::plugin_data
 	 * @uses        __
-	 * @uses        _x
 	 * @uses        deactivate_plugins
 	 * @uses        get_bloginfo
 	 */
 	function install() {
 
 		$plugin_data         = $this->plugin_data();
-		$version_requirement = _x( '3.0', 'WordPress version number', 'bns-corner-logo' );
+		$version_requirement = '3.0';
 
 		$exit_message = sprintf( __( '%1$s requires WordPress version %2$s or newer.', 'bns-corner-logo' ), $plugin_data['Name'], $version_requirement );
 		$exit_message .= '<br />';
 		$exit_message .= sprintf( '<a href="http://codex.wordpress.org/Upgrading_WordPress" target="_blank">%1$s</a>', __( 'Please Update!', 'bns-corner-logo' ) );
 
-		if ( version_compare( get_bloginfo( 'version' ), '3.0', '<' ) ) {
+		if ( version_compare( get_bloginfo( 'version' ), floatval( $version_requirement ), '<' ) ) {
 
 			deactivate_plugins( basename( __FILE__ ) );
 			exit( $exit_message );
