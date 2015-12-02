@@ -148,6 +148,7 @@ class BNS_Corner_Logo extends WP_Widget {
 		/** Add Plugin Row Meta details */
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), 10, 2 );
 
+		/** Add Dashboard plugin for support references */
 		add_action( 'wp_dashboard_setup', array( $this, 'dashboard_widget' ) );
 
 	}
@@ -691,15 +692,54 @@ class BNS_Corner_Logo extends WP_Widget {
 
 	}
 
+
+	/**
+	 * Dashboard Widget
+	 *
+	 * Add a dashboard widget to display relevant support references
+	 *
+	 * @package BNS_Corner_Logo
+	 * @since   2.2
+	 * @date    December 2, 2015
+	 *
+	 * @uses    BNS_Corner_Logo::plugin_data
+	 * @uses    __
+	 * @uses    wp_add_dashboard_widget
+	 */
 	function dashboard_widget() {
 
-		//create a custom dashboard widget
-		wp_add_dashboard_widget( 'bns_dashboard_support_widget', 'BNS Support Details', array( $this, 'dashboard_widget_display' ) );
+		$plugin_date = $this->plugin_data();
+
+		/**  Create a custom dashboard widget */
+		wp_add_dashboard_widget( 'bns_dashboard_support_widget', sprintf( __( '%1$s Support References', 'bns-corner-logo' ), $plugin_date['Name'] ), array(
+			$this,
+			'dashboard_widget_display'
+		) );
 
 	}
 
+
+	/**
+	 * Dashboard Widget Display
+	 *
+	 * Displays content in the dashboard widget
+	 *
+	 * @package BNS_Corner_Logo
+	 * @since   2.2
+	 * @date    December 2, 2015
+	 *
+	 * @uses    BNS_Corner_Logo::plugin_data
+	 * @uses    __
+	 */
 	function dashboard_widget_display() {
-		echo '<p>Show me the money!</p>';
+
+		$plugin_data = $this->plugin_data();
+
+		$message = '<a href="http://wordpress.org/support/plugin/bns-corner-logo">' . sprintf( __( 'WordPress Support Forums for %1$s', 'bns-corner-logo' ), $plugin_data['Name'] ) . '</a>' . '<br />';
+		$message .= '<a href="https://github.com/Cais/BNS-Corner-Logo">' . sprintf( __( '%1$s on GitHub', 'bns-corner-logo' ), $plugin_data['Name'] ) . '</a> ' . __( '(for the latest development version)', 'bns-corner-logo' ) . '<br />';
+
+		echo $message;
+
 	}
 
 
