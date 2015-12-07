@@ -89,6 +89,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * Released ...
 * DO NOT PUBLISH until new dashboard widget code has been fully vetted
 * Added simple dashboard widget for support references
+* Added meta link to WordPress translations page for plugin
 
 = 2.1 =
 * Released November 2015
