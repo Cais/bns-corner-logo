@@ -741,7 +741,7 @@ class BNS_Corner_Logo extends WP_Widget {
 		$plugin_data = $this->plugin_data();
 
 		$support_forums_link = '<a href="http://wordpress.org/support/plugin/bns-corner-logo">' . __( 'WordPress support forums', 'bns-corner-logo' ) . '</a>';
-		$home_page_link      = '<a href="http://buynowshop.com/plugins/bns-corner-logo/" >' . __( 'home page', 'bns-corner' ) . '</a>';
+		$home_page_link      = '<a href="' . $plugin_data['PluginURI'] . '" >' . __( 'home page', 'bns-corner' ) . '</a>';
 		$github_link         = '<a href="https://github.com/Cais/BNS-Corner-Logo">' . sprintf( __( 'GitHub', 'bns-corner-logo' ), $plugin_data['Name'] ) . '</a>';
 
 		$message = sprintf( __( 'Visit the %1$s for help with %2$s; or visit the %3$s of %2$s.', 'bns-corner-logo' ), $support_forums_link, $plugin_data['Name'], $home_page_link ) . '<br />';
