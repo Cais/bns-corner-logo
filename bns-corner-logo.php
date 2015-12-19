@@ -672,8 +672,8 @@ class BNS_Corner_Logo extends WP_Widget {
 	 *
 	 * @return  array $links
 	 *
-	 * @version 2.2
-	 * @date December 7, 2015
+	 * @version    2.2
+	 * @date       December 7, 2015
 	 * Added translation link, (temporarily) drop `wish_link`
 	 */
 	function plugin_meta( $links, $file ) {
@@ -740,8 +740,12 @@ class BNS_Corner_Logo extends WP_Widget {
 
 		$plugin_data = $this->plugin_data();
 
-		$message = '<a href="http://wordpress.org/support/plugin/bns-corner-logo">' . sprintf( __( 'WordPress Support Forums for %1$s', 'bns-corner-logo' ), $plugin_data['Name'] ) . '</a>' . '<br />';
-		$message .= '<a href="https://github.com/Cais/BNS-Corner-Logo">' . sprintf( __( '%1$s on GitHub', 'bns-corner-logo' ), $plugin_data['Name'] ) . '</a> ' . __( '(for the latest development version)', 'bns-corner-logo' ) . '<br />';
+		$support_forums_link = '<a href="http://wordpress.org/support/plugin/bns-corner-logo">' . __( 'WordPress support forums', 'bns-corner-logo' ) . '</a>';
+		$home_page_link      = '<a href="http://buynowshop.com/plugins/bns-corner-logo/" >' . __( 'home page', 'bns-corner' ) . '</a>';
+		$github_link         = '<a href="https://github.com/Cais/BNS-Corner-Logo">' . sprintf( __( 'GitHub', 'bns-corner-logo' ), $plugin_data['Name'] ) . '</a>';
+
+		$message = sprintf( __( 'Visit the %1$s for help with %2$s; or visit the %3$s of %2$s.', 'bns-corner-logo' ), $support_forums_link, $plugin_data['Name'], $home_page_link ) . '<br />';
+		$message .= sprintf( __( 'See %1$s on %2$s for the latest development version.', 'bns-corner-logo' ), $plugin_data['Name'], $github_link ) . '<br />';
 
 		echo $message;
 
