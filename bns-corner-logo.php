@@ -235,6 +235,10 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @version 2.0
 	 * @date    July 10, 2015
 	 * Added Mallory-Everest filter hook `bnscl_image_tag_alt_title`
+	 *
+	 * @version 2.2
+	 * @date    December 20, 2015
+	 * Include attribute in `bnscl_image_tag_alt_title` default filter value
 	 */
 	function widget( $args, $instance ) {
 
@@ -302,7 +306,7 @@ class BNS_Corner_Logo extends WP_Widget {
 						$user_email   = $user_details->user_email;
 						echo get_avatar( $user_email, $gravatar_size );
 					} else {
-						echo $image_tag = '<img ' . apply_filters( 'bnscl_image_tag_alt_title', 'alt="' ) . esc_attr( $image_alt_text ) . '" src="' . esc_url( $image_url ) . '" />';
+						echo $image_tag = '<img ' . apply_filters( 'bnscl_image_tag_alt_title', 'alt="' . esc_attr( $image_alt_text ) ) . '"  src="' . esc_url( $image_url ) . '" />';
 					} ?>
 				</a>
 			</div><!-- .bns-logo -->
