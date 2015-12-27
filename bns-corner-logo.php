@@ -149,7 +149,7 @@ class BNS_Corner_Logo extends WP_Widget {
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), 10, 2 );
 
 		/** Add Dashboard plugin for support references */
-		add_action( 'wp_dashboard_setup', array( $this, 'dashboard_widget' ) );
+		add_action( 'wp_dashboard_setup', array( $this, 'dashboard_widget_for_bns_corner_logo_support' ) );
 
 	}
 
@@ -715,14 +715,14 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @uses    __
 	 * @uses    wp_add_dashboard_widget
 	 */
-	function dashboard_widget() {
+	function dashboard_widget_for_bns_corner_logo_support() {
 
 		$plugin_date = $this->plugin_data();
 
 		/**  Create a custom dashboard widget */
-		wp_add_dashboard_widget( 'bns_dashboard_support_widget', sprintf( __( '%1$s Support References', 'bns-corner-logo' ), $plugin_date['Name'] ), array(
+		wp_add_dashboard_widget( 'bns_corner_logo_dashboard_support_widget', sprintf( __( '%1$s Support References', 'bns-corner-logo' ), $plugin_date['Name'] ), array(
 			$this,
-			'dashboard_widget_display'
+			'dashboard_widget_support_messages_display'
 		) );
 
 	}
@@ -740,7 +740,7 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @uses    BNS_Corner_Logo::plugin_data
 	 * @uses    __
 	 */
-	function dashboard_widget_display() {
+	function dashboard_widget_support_messages_display() {
 
 		$plugin_data = $this->plugin_data();
 
