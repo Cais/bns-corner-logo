@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: BNS Corner Logo\n"
-"POT-Creation-Date: 2015-11-27 20:21-0500\n"
-"PO-Revision-Date: 2015-11-27 20:20-0500\n"
+"POT-Creation-Date: 2016-01-01 14:08-0500\n"
+"PO-Revision-Date: 2016-01-01 14:08-0500\n"
 "Last-Translator: Edward Caissie <edward.caissie@gmail.com>\n"
 "Language-Team: Edward Caissie <edward.caissie@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,92 +20,115 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: bns-corner-logo.php:114
+#: bns-corner-logo.php:113
 msgid ""
 "Widget to display a logo; or, used as a plugin displays image fixed in one "
 "of the four corners."
 msgstr ""
 
-#: bns-corner-logo.php:173
+#: bns-corner-logo.php:178
 #, php-format
 msgid "%1$s requires WordPress version %2$s or newer."
 msgstr ""
 
-#: bns-corner-logo.php:175
+#: bns-corner-logo.php:180
 msgid "Please Update!"
 msgstr ""
 
-#: bns-corner-logo.php:369
+#: bns-corner-logo.php:378
 msgid "My Logo Image"
 msgstr ""
 
-#: bns-corner-logo.php:383
+#: bns-corner-logo.php:392
 msgid "Title:"
 msgstr ""
 
-#: bns-corner-logo.php:394
+#: bns-corner-logo.php:403
 #, php-format
 msgid "Use your %1$s image?"
 msgstr ""
 
-#: bns-corner-logo.php:399
+#: bns-corner-logo.php:408
 msgid "Set Gravatar by User ID Number"
 msgstr ""
 
-#: bns-corner-logo.php:407
+#: bns-corner-logo.php:416
 msgid "Gravatar size in pixels:"
 msgstr ""
 
-#: bns-corner-logo.php:416
+#: bns-corner-logo.php:425
 msgid "URL of Image:"
 msgstr ""
 
-#: bns-corner-logo.php:424
+#: bns-corner-logo.php:433
 msgid "ALT text of Image:"
 msgstr ""
 
-#: bns-corner-logo.php:432
+#: bns-corner-logo.php:441
 msgid "URL to follow:"
 msgstr ""
 
-#: bns-corner-logo.php:443
+#: bns-corner-logo.php:452
 msgid "Open \"URL to follow\" in new window?"
 msgstr ""
 
-#: bns-corner-logo.php:453
+#: bns-corner-logo.php:462
 msgid "Use like a Plugin?"
 msgstr ""
 
-#: bns-corner-logo.php:458
+#: bns-corner-logo.php:467
 msgid "Plugin Logo Location:"
 msgstr ""
 
-#: bns-corner-logo.php:461
+#: bns-corner-logo.php:470
 msgid "Bottom-Right"
 msgstr ""
 
-#: bns-corner-logo.php:462
+#: bns-corner-logo.php:471
 msgid "Bottom-Left"
 msgstr ""
 
-#: bns-corner-logo.php:463
+#: bns-corner-logo.php:472
 msgid "Top-Right"
 msgstr ""
 
-#: bns-corner-logo.php:464
+#: bns-corner-logo.php:473
 msgid "Top-Left"
 msgstr ""
 
-#: bns-corner-logo.php:680
+#: bns-corner-logo.php:693
 msgid "Fork on GitHub"
 msgstr ""
 
-#: bns-corner-logo.php:681
-msgid "Grant a wish?"
+#: bns-corner-logo.php:695 bns-corner-logo.php:749
+msgid "WordPress support forums"
 msgstr ""
 
-#: bns-corner-logo.php:682
-msgid "WordPress Support Forums"
+#: bns-corner-logo.php:696
+msgid "Add your translation"
+msgstr ""
+
+#: bns-corner-logo.php:725
+#, php-format
+msgid "%1$s Support References"
+msgstr ""
+
+#: bns-corner-logo.php:750
+msgid "home page"
+msgstr ""
+
+#: bns-corner-logo.php:751
+msgid "GitHub"
+msgstr ""
+
+#: bns-corner-logo.php:753
+#, php-format
+msgid "Visit the %1$s for help with %2$s; or visit the %3$s of %2$s."
+msgstr ""
+
+#: bns-corner-logo.php:754
+#, php-format
+msgid "See %1$s on %2$s for the latest development version."
 msgstr ""
 
 #. Plugin Name of the plugin/theme

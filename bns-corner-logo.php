@@ -23,7 +23,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @link        https://wordpress.org/plugins/bns-corner-logo/
  * @version     2.2-alpha
  * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2009-2015, Edward Caissie
+ * @copyright   Copyright (c) 2009-2016, Edward Caissie
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License version 2, as published by the
@@ -45,9 +45,8 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * The license for this software can also likely be found here:
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
- * @version     2.1
- * @date        November 2015
- * Changed to singleton style structure
+ * @version     2.2
+ * @date        January 2016
  */
 class BNS_Corner_Logo extends WP_Widget {
 
@@ -149,7 +148,10 @@ class BNS_Corner_Logo extends WP_Widget {
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), 10, 2 );
 
 		/** Add Dashboard plugin for support references */
-		add_action( 'wp_dashboard_setup', array( $this, 'dashboard_widget_for_bns_corner_logo_support' ) );
+		add_action( 'wp_dashboard_setup', array(
+			$this,
+			'dashboard_widget_for_bns_corner_logo_support'
+		) );
 
 	}
 

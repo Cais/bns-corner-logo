@@ -61,7 +61,7 @@ Yes, this plugin has been made for multi-widget compatibility. Each instance of 
 3. An image in the sidebar and an image "fixed" in the bottom-right corner showing multiple instances of the widget.
 
 == Other Notes ==
-  Copyright 2009-2015  Edward Caissie  (email : edward.caissie@gmail.com)
+  Copyright 2009-2016  Edward Caissie  (email : edward.caissie@gmail.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 2,
@@ -90,6 +90,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * DO NOT PUBLISH until new dashboard widget code has been fully vetted
 * Added simple dashboard widget for support references
 * Added meta link to WordPress translations page for plugin
+* Updated `.pomo` files and copyright year
 
 = 2.1 =
 * Released November 2015
