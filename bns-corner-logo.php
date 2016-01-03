@@ -187,7 +187,7 @@ class BNS_Corner_Logo extends WP_Widget {
 		$exit_message .= '<br />';
 		$exit_message .= sprintf( '<a href="http://codex.wordpress.org/Upgrading_WordPress" target="_blank">%1$s</a>', __( 'Please Update!', 'bns-corner-logo' ) );
 
-		/** Conditional check of current WordPress verison */
+		/** Conditional check of current WordPress version */
 		if ( version_compare( get_bloginfo( 'version' ), floatval( $version_required ), '<' ) ) {
 
 			deactivate_plugins( basename( __FILE__ ) );
