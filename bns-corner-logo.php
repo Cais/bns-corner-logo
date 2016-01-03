@@ -3,7 +3,7 @@
 Plugin Name: BNS Corner Logo
 Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
 Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
-Version: 2.2-alpha
+Version: 2.2
 Text Domain: bns-corner-logo
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
@@ -21,7 +21,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @link        http://buynowshop.com/plugins/bns-corner-logo/
  * @link        https://github.com/Cais/bns-corner-logo/
  * @link        https://wordpress.org/plugins/bns-corner-logo/
- * @version     2.2-alpha
+ * @version     2.2
  * @author      Edward Caissie <edward.caissie@gmail.com>
  * @copyright   Copyright (c) 2009-2016, Edward Caissie
  *
@@ -81,25 +81,24 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @package BNS_Corner_Logo
 	 * @since   0.1
 	 *
-	 * @uses    (CONSTANT) WP_CONTENT_URL
-	 * @uses    (CLASS) WP_Widget
+	 * @uses    WP_CONTENT_DIR
+	 * @uses    WP_Widget
 	 * @uses    __
 	 * @uses    add_action
+	 * @uses    add_filter
 	 * @uses    content_url
+	 * @uses    load_plugin_textdomain
+	 * @uses    plugin_basename
 	 * @uses    register_activation_hook
-	 *
-	 * @version 1.9
-	 * @date    March 31, 2015
-	 * Added `BNS_CUSTOM_PATH` and `BNS_CUSTOM_URL` constants
-	 *
-	 * @version 2.0
-	 * @date    July 4, 2015
-	 * Renamed to use `__construct` as the constructor method
 	 *
 	 * @version 2.1
 	 * @date    November 26, 2015
 	 * Moved compatibility check to be parsed first via `register_activation_hook`
 	 * Moved `update_message` function into class a method call
+	 *
+	 * @version 2.2
+	 * @date    January 3, 2016
+	 * Updated inline documentation and added call to dashboard widget
 	 */
 	function __construct() {
 

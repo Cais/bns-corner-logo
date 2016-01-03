@@ -3,8 +3,8 @@ Contributors: cais
 Donate link: http://buynowshop.com/
 Tags: image, logo, multiple widgets, gravatar, multisite compatible, widget-only
 Requires at least: 3.0
-Tested up to: 4.4
-Stable tag: 2.2-alpha
+Tested up to: 4.4.1
+Stable tag: 2.2
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -86,11 +86,11 @@ Please stay current with your WordPress installation, your active theme, and you
 
 == Changelog ==
 = 2.2 =
-* Released ...
-* DO NOT PUBLISH until new dashboard widget code has been fully vetted
+* Released January 2016
 * Added simple dashboard widget for support references
 * Added meta link to WordPress translations page for plugin
 * Updated `.pomo` files and copyright year
+* Updated inline documentation and added call to dashboard widget
 
 = 2.1 =
 * Released November 2015
