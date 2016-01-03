@@ -166,19 +166,29 @@ class BNS_Corner_Logo extends WP_Widget {
 	 *
 	 * @uses        BNS_Corner_Logo::plugin_data
 	 * @uses        __
+	 * @uses        apply_filters
 	 * @uses        deactivate_plugins
 	 * @uses        get_bloginfo
+	 *
+	 * @version     2.2
+	 * @date        January 3, 2016
+	 * Added hook to allow for arbitrary change to "Requires at least" version
+	 * Minor change to `$exit_message` text
 	 */
 	function install() {
 
-		$plugin_data         = $this->plugin_data();
-		$version_requirement = '3.0';
+		/** @var float $version_required - see "Requires at least" from `readme.txt` */
+		$version_required = apply_filters( 'bns_corner_logo_requires_at_least_version', '3.0' );
 
-		$exit_message = sprintf( __( '%1$s requires WordPress version %2$s or newer.', 'bns-corner-logo' ), $plugin_data['Name'], $version_requirement );
+		$plugin_data = $this->plugin_data();
+
+		/** @var string $exit_message - build an explanation message */
+		$exit_message = sprintf( __( '%1$s requires WordPress version %2$s or later.', 'bns-corner-logo' ), $plugin_data['Name'], $version_required );
 		$exit_message .= '<br />';
 		$exit_message .= sprintf( '<a href="http://codex.wordpress.org/Upgrading_WordPress" target="_blank">%1$s</a>', __( 'Please Update!', 'bns-corner-logo' ) );
 
-		if ( version_compare( get_bloginfo( 'version' ), floatval( $version_requirement ), '<' ) ) {
+		/** Conditional check of current WordPress verison */
+		if ( version_compare( get_bloginfo( 'version' ), floatval( $version_required ), '<' ) ) {
 
 			deactivate_plugins( basename( __FILE__ ) );
 			exit( $exit_message );

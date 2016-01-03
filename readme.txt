@@ -89,6 +89,8 @@ Please stay current with your WordPress installation, your active theme, and you
 * Released January 2016
 * Added simple dashboard widget for support references
 * Added meta link to WordPress translations page for plugin
+* Added hook to allow for arbitrary change to "Requires at least" version
+* Minor change to `$exit_message` text
 * Updated `.pomo` files and copyright year
 * Updated inline documentation and added call to dashboard widget
 
