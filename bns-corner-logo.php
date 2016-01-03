@@ -146,10 +146,16 @@ class BNS_Corner_Logo extends WP_Widget {
 		/** Add Plugin Row Meta details */
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), 10, 2 );
 
-		/** Add Dashboard plugin for support references */
+		/** Add Dashboard widget for support references */
 		add_action( 'wp_dashboard_setup', array(
 			$this,
 			'dashboard_widget_for_bns_corner_logo_support'
+		) );
+
+		/** Hide Dashboard widget by default via Screen Options */
+		add_filter( 'default_hidden_meta_boxes', array(
+			$this,
+			'default_screen_option'
 		) );
 
 	}
@@ -763,6 +769,27 @@ class BNS_Corner_Logo extends WP_Widget {
 		$message .= sprintf( __( 'See %1$s on %2$s for the latest development version.', 'bns-corner-logo' ), $plugin_data['Name'], $github_link ) . '<br />';
 
 		echo $message;
+
+	}
+
+
+	/**
+	 * Hide the Dashboard widget by default under Screen Options
+	 *
+	 * @package BNS_Corner_Logo
+	 * @since   2.2
+	 * @date    January 3, 2016
+	 *
+	 * @param $hidden
+	 *
+	 * @return array
+	 */
+	function default_screen_option( $hidden ) {
+
+		/** Add Dashboard widget ID to default hidden Screen Options array */
+		$hidden[] = 'bns_corner_logo_dashboard_support_widget';
+
+		return $hidden;
 
 	}
 

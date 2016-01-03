@@ -88,6 +88,7 @@ Please stay current with your WordPress installation, your active theme, and you
 = 2.2 =
 * Released January 2016
 * Added simple dashboard widget for support references
+* Hide dashboard widget by default via Screen Options
 * Added meta link to WordPress translations page for plugin
 * Added hook to allow for arbitrary change to "Requires at least" version
 * Minor change to `$exit_message` text
