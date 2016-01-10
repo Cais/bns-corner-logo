@@ -3,7 +3,7 @@
 Plugin Name: BNS Corner Logo
 Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
 Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
-Version: 2.2
+Version: 2.2.1
 Text Domain: bns-corner-logo
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
@@ -21,7 +21,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @link        http://buynowshop.com/plugins/bns-corner-logo/
  * @link        https://github.com/Cais/bns-corner-logo/
  * @link        https://wordpress.org/plugins/bns-corner-logo/
- * @version     2.2
+ * @version     2.2.1
  * @author      Edward Caissie <edward.caissie@gmail.com>
  * @copyright   Copyright (c) 2009-2016, Edward Caissie
  *
@@ -456,28 +456,32 @@ class BNS_Corner_Logo extends WP_Widget {
 	 *
 	 * Adds plugin stylesheet and allows for custom stylesheet to be added by end-user.
 	 *
-	 * @package BNS_Corner_Logo
-	 * @since   1.5
+	 * @package    BNS_Corner_Logo
+	 * @since      1.5
 	 *
-	 * @uses    (CONSTANT) WP_CONTENT_DIR
-	 * @uses    BNS_Corner_Logo::plugin_data
-	 * @uses    content_url
-	 * @uses    plugin_dir_url
-	 * @uses    plugin_dir_path
-	 * @uses    wp_enqueue_style
+	 * @uses       (CONSTANT) WP_CONTENT_DIR
+	 * @uses       BNS_Corner_Logo::plugin_data
+	 * @uses       content_url
+	 * @uses       plugin_dir_url
+	 * @uses       plugin_dir_path
+	 * @uses       wp_enqueue_style
 	 *
-	 * @version 1.8.3
-	 * @date    December 30, 2013
+	 * @version    1.8.3
+	 * @date       December 30, 2013
 	 * Added functional option to place `bns-corner-logo-custom-style.css` in the `/wp-content/` folder
 	 *
-	 * @version 1.9
-	 * @date    March 31, 2015
+	 * @version    1.9
+	 * @date       March 31, 2015
 	 * Added calls to custom JavaScript and CSS files in the `/bns-customs/` folder
 	 * Corrected typo in custom JavaScript file name
 	 *
-	 * @version 2.1
-	 * @date    November 27, 2015
+	 * @version    2.1
+	 * @date       November 27, 2015
 	 * Moved `plugin_data` into its own method and modified variable used
+	 *
+	 * @version    2.2.1
+	 * @date       January 10, 2016
+	 * Corrected minor typo in custom CSS path/route
 	 */
 	function scripts_and_styles() {
 
@@ -509,8 +513,8 @@ class BNS_Corner_Logo extends WP_Widget {
 		}
 
 		/** For custom stylesheets in the /wp-content/bns-custom/ folder */
-		if ( is_readable( BNS_CUSTOM_PATH . 'bnsft-custom-style.css' ) ) {
-			wp_enqueue_style( 'BNSFT-Custom-Style', BNS_CUSTOM_URL . 'bnsft-custom-style.css', array(), $bnsft_data['Version'], 'screen' );
+		if ( is_readable( BNS_CUSTOM_PATH . 'bnsfc-custom-style.css' ) ) {
+			wp_enqueue_style( 'BNSCL-Custom-Style', BNS_CUSTOM_URL . 'bnscl-custom-style.css', array(), $plugin_data['Version'], 'screen' );
 		}
 
 	}
