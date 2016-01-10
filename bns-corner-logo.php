@@ -654,7 +654,7 @@ class BNS_Corner_Logo extends WP_Widget {
 	 *
 	 * @version    2.2
 	 * @date       December 7, 2015
-	 * Added translation link, (temporarily) drop `wish_link`
+	 * Added "Add your translation" link to https://translate.wordpress.org/
 	 */
 	function plugin_meta( $links, $file ) {
 
@@ -665,7 +665,7 @@ class BNS_Corner_Logo extends WP_Widget {
 			$links = array_merge(
 				$links, array(
 					'fork_link'      => '<a href="https://github.com/Cais/BNS-Corner-Logo">' . __( 'Fork on GitHub', 'bns-corner-logo' ) . '</a>',
-					// 'wish_link'      => '<a href="http://www.amazon.ca/registry/wishlist/2NNNE1PAQIRUL">' . __( 'Grant a wish?', 'bns-corner-logo' ) . '</a>',
+					'wish_link'      => '<a href="http://www.amazon.ca/registry/wishlist/2NNNE1PAQIRUL">' . __( 'Grant a wish?', 'bns-corner-logo' ) . '</a>',
 					'support_link'   => '<a href="http://wordpress.org/support/plugin/bns-corner-logo">' . __( 'WordPress support forums', 'bns-corner-logo' ) . '</a>',
 					'translate_link' => '<a href="https://translate.wordpress.org/projects/wp-plugins/bns-corner-logo">' . __( 'Add your translation', 'bns-corner-logo' ) . '</a>'
 				)
