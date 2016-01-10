@@ -92,6 +92,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * Added meta link to WordPress translations page for plugin
 * Added hook to allow for arbitrary change to "Requires at least" version
 * Minor change to `$exit_message` text
+* Minor code formatting changes
 * Updated `.pomo` files and copyright year
 * Updated inline documentation and added call to dashboard widget
 

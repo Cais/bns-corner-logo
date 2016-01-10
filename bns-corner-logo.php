@@ -130,33 +130,19 @@ class BNS_Corner_Logo extends WP_Widget {
 		add_action( 'widgets_init', array( $this, 'load_bnscl_widget' ) );
 
 		/** Add scripts and style */
-		add_action(
-			'wp_enqueue_scripts', array(
-				$this,
-				'scripts_and_styles'
-			)
-		);
+		add_action( 'wp_enqueue_scripts', array( $this, 'scripts_and_styles' ) );
 
 		/** Add update message */
-		add_action( 'in_plugin_update_message-' . plugin_basename( __FILE__ ), array(
-			$this,
-			'update_message'
-		) );
+		add_action( 'in_plugin_update_message-' . plugin_basename( __FILE__ ), array( $this, 'update_message' ) );
 
 		/** Add Plugin Row Meta details */
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), 10, 2 );
 
 		/** Add Dashboard widget for support references */
-		add_action( 'wp_dashboard_setup', array(
-			$this,
-			'dashboard_widget_for_bns_corner_logo_support'
-		) );
+		add_action( 'wp_dashboard_setup', array( $this, 'dashboard_widget_for_bns_corner_logo_support' ) );
 
 		/** Hide Dashboard widget by default via Screen Options */
-		add_filter( 'default_hidden_meta_boxes', array(
-			$this,
-			'default_screen_option'
-		) );
+		add_filter( 'default_hidden_meta_boxes', array( $this, 'default_screen_option' ) );
 
 	}
 
@@ -405,83 +391,56 @@ class BNS_Corner_Logo extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bns-corner-logo' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
-			       name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>"
-			       style="width:100%;" />
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
 		</p>
 
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['use_gravatar'], true ); ?>
-			       id="<?php echo $this->get_field_id( 'use_gravatar' ); ?>"
-			       name="<?php echo $this->get_field_name( 'use_gravatar' ); ?>" />
-			<label
-				for="<?php echo $this->get_field_id( 'use_gravatar' ); ?>"><?php printf( __( 'Use your %1$s image?', 'bns-corner-logo' ), '<a href="http://gravatar.com">Gravatar</a>' ); ?></label>
+			<input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['use_gravatar'], true ); ?> id="<?php echo $this->get_field_id( 'use_gravatar' ); ?>" name="<?php echo $this->get_field_name( 'use_gravatar' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'use_gravatar' ); ?>"><?php printf( __( 'Use your %1$s image?', 'bns-corner-logo' ), '<a href="http://gravatar.com">Gravatar</a>' ); ?></label>
 		</p>
 
 		<p>
-			<label
-				for="<?php echo $this->get_field_id( 'gravatar_user_id' ); ?>"><?php _e( 'Set Gravatar by User ID Number', 'bns-corner-logo' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'gravatar_user_id' ); ?>"
-			       name="<?php echo $this->get_field_name( 'gravatar_user_id' ); ?>"
-			       value="<?php echo $instance['gravatar_user_id']; ?>" style="width:100%;" />
+			<label for="<?php echo $this->get_field_id( 'gravatar_user_id' ); ?>"><?php _e( 'Set Gravatar by User ID Number', 'bns-corner-logo' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'gravatar_user_id' ); ?>" name="<?php echo $this->get_field_name( 'gravatar_user_id' ); ?>" value="<?php echo $instance['gravatar_user_id']; ?>" style="width:100%;" />
 		</p>
 
 		<p>
-			<label
-				for="<?php echo $this->get_field_id( 'gravatar_size' ); ?>"><?php _e( 'Gravatar size in pixels:', 'bns-corner-logo' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'gravatar_size' ); ?>"
-			       name="<?php echo $this->get_field_name( 'gravatar_size' ); ?>"
-			       value="<?php echo $instance['gravatar_size']; ?>" style="width:100%;" />
+			<label for="<?php echo $this->get_field_id( 'gravatar_size' ); ?>"><?php _e( 'Gravatar size in pixels:', 'bns-corner-logo' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'gravatar_size' ); ?>" name="<?php echo $this->get_field_name( 'gravatar_size' ); ?>" value="<?php echo $instance['gravatar_size']; ?>" style="width:100%;" />
 		</p>
 
 		<hr /><!-- Aesthetic separator -->
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'image_url' ); ?>"><?php _e( 'URL of Image:', 'bns-corner-logo' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'image_url' ); ?>"
-			       name="<?php echo $this->get_field_name( 'image_url' ); ?>"
-			       value="<?php echo $instance['image_url']; ?>" />
+			<input class="widefat" id="<?php echo $this->get_field_id( 'image_url' ); ?>" name="<?php echo $this->get_field_name( 'image_url' ); ?>" value="<?php echo $instance['image_url']; ?>" />
 		</p>
 
 		<p>
-			<label
-				for="<?php echo $this->get_field_id( 'image_alt_text' ); ?>"><?php _e( 'ALT text of Image:', 'bns-corner-logo' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'image_alt_text' ); ?>"
-			       name="<?php echo $this->get_field_name( 'image_alt_text' ); ?>"
-			       value="<?php echo $instance['image_alt_text']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'image_alt_text' ); ?>"><?php _e( 'ALT text of Image:', 'bns-corner-logo' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'image_alt_text' ); ?>" name="<?php echo $this->get_field_name( 'image_alt_text' ); ?>" value="<?php echo $instance['image_alt_text']; ?>" />
 		</p>
 
 		<p>
-			<label
-				for="<?php echo $this->get_field_id( 'image_link' ); ?>"><?php _e( 'URL to follow:', 'bns-corner-logo' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'image_link' ); ?>"
-			       name="<?php echo $this->get_field_name( 'image_link' ); ?>"
-			       value="<?php echo $instance['image_link']; ?>" />
+			<label for="<?php echo $this->get_field_id( 'image_link' ); ?>"><?php _e( 'URL to follow:', 'bns-corner-logo' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'image_link' ); ?>" name="<?php echo $this->get_field_name( 'image_link' ); ?>" value="<?php echo $instance['image_link']; ?>" />
 		</p>
 
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['new_window'], true ); ?>
-			       id="<?php echo $this->get_field_id( 'new-window' ); ?>"
-			       name="<?php echo $this->get_field_name( 'new_window' ); ?>" />
-			<label
-				for="<?php echo $this->get_field_id( 'new_window' ); ?>"><?php _e( 'Open "URL to follow" in new window?', 'bns-corner-logo' ); ?></label>
+			<input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['new_window'], true ); ?> id="<?php echo $this->get_field_id( 'new-window' ); ?>" name="<?php echo $this->get_field_name( 'new_window' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'new_window' ); ?>"><?php _e( 'Open "URL to follow" in new window?', 'bns-corner-logo' ); ?></label>
 		</p>
 
 		<hr /><!-- Separates functionality: Widget above - plugin below -->
 
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['widget_plugin'], true ); ?>
-			       id="<?php echo $this->get_field_id( 'widget_plugin' ); ?>"
-			       name="<?php echo $this->get_field_name( 'widget_plugin' ); ?>" />
-			<label
-				for="<?php echo $this->get_field_id( 'widget_plugin' ); ?>"><?php _e( 'Use like a Plugin?', 'bns-corner-logo' ); ?></label>
+			<input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['widget_plugin'], true ); ?> id="<?php echo $this->get_field_id( 'widget_plugin' ); ?>" name="<?php echo $this->get_field_name( 'widget_plugin' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'widget_plugin' ); ?>"><?php _e( 'Use like a Plugin?', 'bns-corner-logo' ); ?></label>
 		</p>
 
 		<p>
-			<label
-				for="<?php echo $this->get_field_id( 'logo_location' ); ?>"><?php _e( 'Plugin Logo Location:', 'bns-corner-logo' ); ?></label>
-			<select id="<?php echo $this->get_field_id( 'logo_location' ); ?>"
-			        name="<?php echo $this->get_field_name( 'logo_location' ); ?>" class="widefat">
+			<label for="<?php echo $this->get_field_id( 'logo_location' ); ?>"><?php _e( 'Plugin Logo Location:', 'bns-corner-logo' ); ?></label>
+			<select id="<?php echo $this->get_field_id( 'logo_location' ); ?>" name="<?php echo $this->get_field_name( 'logo_location' ); ?>" class="widefat">
 				<option <?php selected( __( 'Bottom-Right', 'bns-corner-logo' ), $instance['logo_location'], true ); ?>><?php _e( 'Bottom-Right', 'bns-corner-logo' ); ?></option>
 				<option <?php selected( __( 'Bottom-Left', 'bns-corner-logo' ), $instance['logo_location'], true ); ?>><?php _e( 'Bottom-Left', 'bns-corner-logo' ); ?></option>
 				<option <?php selected( __( 'Top-Right', 'bns-corner-logo' ), $instance['logo_location'], true ); ?>><?php _e( 'Top-Right', 'bns-corner-logo' ); ?></option>
@@ -737,10 +696,7 @@ class BNS_Corner_Logo extends WP_Widget {
 		$plugin_date = $this->plugin_data();
 
 		/**  Create a custom dashboard widget */
-		wp_add_dashboard_widget( 'bns_corner_logo_dashboard_support_widget', sprintf( __( '%1$s Support References', 'bns-corner-logo' ), $plugin_date['Name'] ), array(
-			$this,
-			'dashboard_widget_support_messages_display'
-		) );
+		wp_add_dashboard_widget( 'bns_corner_logo_dashboard_support_widget', sprintf( __( '%1$s Support References', 'bns-corner-logo' ), $plugin_date['Name'] ), array( $this, 'dashboard_widget_support_messages_display' ) );
 
 	}
 
