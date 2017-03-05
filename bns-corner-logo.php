@@ -285,13 +285,9 @@ class BNS_Corner_Logo extends WP_Widget {
 						$user_details = get_userdata( $gravatar_user_id );
 						$user_email   = $user_details->user_email;
 						echo get_avatar( $user_email, $gravatar_size );
-					} else {
-						$image_tag = '<img '
-						             . esc_attr( apply_filters( 'bnscl_image_tag_alt_title', 'alt="' . $image_alt_text . '"' ) )
-						             . 'src="' . $image_url . '" 
-									 . />';
-						echo esc_url( $image_tag );
-					} ?>
+					} else { ?>
+						<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $image_alt_text ); ?>" />
+					<?php } ?>
 				</a>
 			</div><!-- .bns-logo -->
 
@@ -317,13 +313,9 @@ class BNS_Corner_Logo extends WP_Widget {
 						$user_details = get_userdata( $gravatar_user_id );
 						$user_email   = $user_details->user_email;
 						echo get_avatar( $user_email, $gravatar_size );
-					} else {
-						$image_tag = '<img '
-						             . esc_attr( apply_filters( 'bnscl_image_tag_alt_title', 'alt="' . $image_alt_text . '"' ) )
-									 . 'src="' . $image_url . '" 
-									 . />';
-						echo esc_url( $image_tag );
-					} ?>
+					} else { ?>
+						<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $image_alt_text ); ?>" />
+					<?php } ?>
 				</a>
 			</div><!-- .bns-logo -->
 		<?php }
@@ -401,23 +393,23 @@ class BNS_Corner_Logo extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bns-corner-logo' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'bns-corner-logo' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" style="width:100%;" />
 		</p>
 
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['use_gravatar'], true ); ?> id="<?php echo $this->get_field_id( 'use_gravatar' ); ?>" name="<?php echo $this->get_field_name( 'use_gravatar' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'use_gravatar' ); ?>"><?php printf( __( 'Use your %1$s image?', 'bns-corner-logo' ), '<a href="http://gravatar.com">Gravatar</a>' ); ?></label>
+			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['use_gravatar'], true ); ?> id="<?php echo esc_attr( $this->get_field_id( 'use_gravatar' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'use_gravatar' ) ); ?>" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'use_gravatar' ) ); ?>"><?php printf( esc_html__( 'Use your %1$s image?', 'bns-corner-logo' ), '<a href="http://gravatar.com">Gravatar</a>' ); ?></label>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'gravatar_user_id' ); ?>"><?php _e( 'Set Gravatar by User ID Number', 'bns-corner-logo' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'gravatar_user_id' ); ?>" name="<?php echo $this->get_field_name( 'gravatar_user_id' ); ?>" value="<?php echo $instance['gravatar_user_id']; ?>" style="width:100%;" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'gravatar_user_id' ) ); ?>"><?php esc_attr_e( 'Set Gravatar by User ID Number', 'bns-corner-logo' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'gravatar_user_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'gravatar_user_id' ) ); ?>" value="<?php echo esc_attr( $instance['gravatar_user_id'] ); ?>" style="width:100%;" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'gravatar_size' ); ?>"><?php _e( 'Gravatar size in pixels:', 'bns-corner-logo' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'gravatar_size' ); ?>" name="<?php echo $this->get_field_name( 'gravatar_size' ); ?>" value="<?php echo $instance['gravatar_size']; ?>" style="width:100%;" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'gravatar_size' ) ); ?>"><?php esc_attr_e( 'Gravatar size in pixels:', 'bns-corner-logo' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'gravatar_size' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'gravatar_size' ) ); ?>" value="<?php echo esc_attr( $instance['gravatar_size'] ); ?>" style="width:100%;" />
 		</p>
 
 		<hr /><!-- Aesthetic separator -->

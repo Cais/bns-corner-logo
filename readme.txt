@@ -88,6 +88,8 @@ Please stay current with your WordPress installation, your active theme, and you
 = 2.2.1 =
 * Released ...
 * Corrected minor typo in custom CSS path/route
+* Removed `bnscl_image_tag_alt_title` hook due to escaping issues.
+* Refactored $image_tag to more standard `<img>` tag
 
 = 2.2 =
 * Released January 2016
