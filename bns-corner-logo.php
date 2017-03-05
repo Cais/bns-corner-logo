@@ -1,15 +1,15 @@
 <?php
-/*
-Plugin Name: BNS Corner Logo
-Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
-Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
-Version: 2.2.1
-Text Domain: bns-corner-logo
-Author: Edward Caissie
-Author URI: http://edwardcaissie.com/
-License: GNU General Public License v2
-License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
-*/
+/**
+ * Plugin Name: BNS Corner Logo
+ * Plugin URI: http://buynowshop.com/plugins/bns-corner-logo/
+ * Description: Widget to display a user selected image as a logo; or, used as a plugin that displays the image fixed in one of the four corners of the display.
+ * Version: 2.2.1
+ * Text Domain: bns-corner-logo
+ * Author: Edward Caissie
+ * Author URI: http://edwardcaissie.com/
+ * License: GNU General Public License v2
+ * License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ */
 
 /**
  * BNS Corner Logo
@@ -23,7 +23,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @link        https://wordpress.org/plugins/bns-corner-logo/
  * @version     2.2.1
  * @author      Edward Caissie <edward.caissie@gmail.com>
- * @copyright   Copyright (c) 2009-2016, Edward Caissie
+ * @copyright   Copyright (c) 2009-2017, Edward Caissie
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License version 2, as published by the
@@ -45,11 +45,16 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * The license for this software can also likely be found here:
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
- * @version     2.2
- * @date        January 2016
+ * @version     2.2.1
+ * @date        March 2017
  */
 class BNS_Corner_Logo extends WP_Widget {
 
+	/**
+	 * Set the instance to null initially
+	 *
+	 * @var $instance null
+	 */
 	private static $instance = null;
 
 	/**
@@ -81,15 +86,15 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @package BNS_Corner_Logo
 	 * @since   0.1
 	 *
-	 * @uses    WP_CONTENT_DIR
-	 * @uses    WP_Widget
-	 * @uses    __
-	 * @uses    add_action
-	 * @uses    add_filter
-	 * @uses    content_url
-	 * @uses    load_plugin_textdomain
-	 * @uses    plugin_basename
-	 * @uses    register_activation_hook
+	 * @see     WP_CONTENT_DIR
+	 * @see     WP_Widget
+	 * @see     __
+	 * @see     add_action
+	 * @see     add_filter
+	 * @see     content_url
+	 * @see     load_plugin_textdomain
+	 * @see     plugin_basename
+	 * @see     register_activation_hook
 	 *
 	 * @version 2.1
 	 * @date    November 26, 2015
@@ -109,7 +114,7 @@ class BNS_Corner_Logo extends WP_Widget {
 		/** Widget settings */
 		$widget_ops = array(
 			'classname'   => 'bns-corner-logo',
-			'description' => __( 'Widget to display a logo; or, used as a plugin displays image fixed in one of the four corners.', 'bns-corner-logo' )
+			'description' => esc_html__( 'Widget to display a logo; or, used as a plugin displays image fixed in one of the four corners.', 'bns-corner-logo' ),
 		);
 
 		/** Widget control settings */
@@ -130,19 +135,31 @@ class BNS_Corner_Logo extends WP_Widget {
 		add_action( 'widgets_init', array( $this, 'load_bnscl_widget' ) );
 
 		/** Add scripts and style */
-		add_action( 'wp_enqueue_scripts', array( $this, 'scripts_and_styles' ) );
+		add_action( 'wp_enqueue_scripts', array(
+			$this,
+			'scripts_and_styles',
+		) );
 
 		/** Add update message */
-		add_action( 'in_plugin_update_message-' . plugin_basename( __FILE__ ), array( $this, 'update_message' ) );
+		add_action( 'in_plugin_update_message-' . plugin_basename( __FILE__ ), array(
+			$this,
+			'update_message',
+		) );
 
 		/** Add Plugin Row Meta details */
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), 10, 2 );
 
 		/** Add Dashboard widget for support references */
-		add_action( 'wp_dashboard_setup', array( $this, 'dashboard_widget_for_bns_corner_logo_support' ) );
+		add_action( 'wp_dashboard_setup', array(
+			$this,
+			'dashboard_widget_for_bns_corner_logo_support',
+		) );
 
 		/** Hide Dashboard widget by default via Screen Options */
-		add_filter( 'default_hidden_meta_boxes', array( $this, 'default_screen_option' ) );
+		add_filter( 'default_hidden_meta_boxes', array(
+			$this,
+			'default_screen_option',
+		) );
 
 	}
 
@@ -156,11 +173,11 @@ class BNS_Corner_Logo extends WP_Widget {
 	 *
 	 * @internal    Version 3.0 being used in reference to home_url()
 	 *
-	 * @uses        BNS_Corner_Logo::plugin_data
-	 * @uses        __
-	 * @uses        apply_filters
-	 * @uses        deactivate_plugins
-	 * @uses        get_bloginfo
+	 * @see         BNS_Corner_Logo::plugin_data
+	 * @see         __
+	 * @see         apply_filters
+	 * @see         deactivate_plugins
+	 * @see         get_bloginfo
 	 *
 	 * @version     2.2
 	 * @date        January 3, 2016
@@ -169,17 +186,17 @@ class BNS_Corner_Logo extends WP_Widget {
 	 */
 	function install() {
 
-		/** @var float $version_required - see "Requires at least" from `readme.txt` */
+		// @var float $version_required - see "Requires at least" from `readme.txt`.
 		$version_required = apply_filters( 'bns_corner_logo_requires_at_least_version', '3.0' );
 
 		$plugin_data = $this->plugin_data();
 
-		/** @var string $exit_message - build an explanation message */
+		// @var string $exit_message - build an explanation message.
 		$exit_message = sprintf( __( '%1$s requires WordPress version %2$s or later.', 'bns-corner-logo' ), $plugin_data['Name'], $version_required );
 		$exit_message .= '<br />';
 		$exit_message .= sprintf( '<a href="http://codex.wordpress.org/Upgrading_WordPress" target="_blank">%1$s</a>', __( 'Please Update!', 'bns-corner-logo' ) );
 
-		/** Conditional check of current WordPress version */
+		// Conditional check of current WordPress version.
 		if ( version_compare( get_bloginfo( 'version' ), floatval( $version_required ), '<' ) ) {
 
 			deactivate_plugins( basename( __FILE__ ) );
@@ -198,15 +215,15 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @package    BNS_Corner_Logo
 	 * @since      2.1
 	 *
-	 * @uses       get_plugin_data
+	 * @see        get_plugin_data
 	 *
 	 * @return array
 	 */
 	function plugin_data() {
-
-		/** Call the wp-admin plugin code */
+		// Call the wp-admin plugin code.
 		require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-		/** @var $plugin_data - holds the plugin header data */
+
+		// @var $plugin_data - holds the plugin header data.
 		$plugin_data = get_plugin_data( __FILE__ );
 
 		return $plugin_data;
@@ -217,36 +234,29 @@ class BNS_Corner_Logo extends WP_Widget {
 	/**
 	 * Override widget method of class WP_Widget
 	 *
-	 * @param   $args
-	 * @param   $instance
+	 * @param array  $args     default values.
+	 * @param object $instance instance specific values.
 	 *
-	 * @uses    apply_filters
-	 * @uses    esc_attr
-	 * @uses    get_avatar
-	 * @uses    get_userdata
+	 * @see     apply_filters
+	 * @see     esc_attr
+	 * @see     get_avatar
+	 * @see     get_userdata
 	 *
 	 * @return  void
 	 *
-	 * @version 1.8.4
-	 * @date    January 29, 2014
-	 * Properly escape the alt image attribute
-	 *
-	 * @version 1.8.5
-	 * @date    January 30, 2015
-	 * More sanitizing - `$image_url` and `$image_link`; thanks ScheRas
-	 *
 	 * @version 2.0
 	 * @date    July 10, 2015
-	 * Added Mallory-Everest filter hook `bnscl_image_tag_alt_title`
+	 * Added Mallory-Everest filter hook `bnscl_image_tag_alt_title`.
 	 *
 	 * @version 2.2
 	 * @date    December 20, 2015
-	 * Include attribute in `bnscl_image_tag_alt_title` default filter value
+	 * Include attribute in `bnscl_image_tag_alt_title` default filter value.
 	 */
 	function widget( $args, $instance ) {
 
 		extract( $args );
-		/** User-selected settings */
+
+		// User-selected settings.
 		$title            = apply_filters( 'widget_title', $instance['title'] );
 		$use_gravatar     = $instance['use_gravatar'];
 		$gravatar_user_id = $instance['gravatar_user_id'];
@@ -259,66 +269,67 @@ class BNS_Corner_Logo extends WP_Widget {
 		$logo_location    = $instance['logo_location'];
 
 		if ( ! $widget_plugin ) {
-			/** @var $before_widget string - define by theme */
 			echo $before_widget;
 
-			/* Title of widget (before and after defined by themes). */
+			// Title of widget (before and after defined by themes).
 			if ( $title ) {
-				/**
-				 * @var $before_title   string - defined by theme
-				 * @var $after_title    string - defined by theme
-				 */
 				echo $before_title . $title . $after_title;
 			}
 
-			/** Display image based on widget settings */ ?>
+			// Display image based on widget settings. ?>
 			<div class="bns-logo">
-				<a <?php if ( $new_window ) {
-					echo 'target="_blank"';
-				} ?> href="<?php echo esc_url( $image_link ); ?>">
-					<!-- Use FIRST Admin gravatar user ID = 1 as default -->
-					<?php if ( $use_gravatar ) {
+				<a href="<?php echo esc_url( $image_link ); ?>" <?php if ( $new_window ) { echo 'target="_blank"'; } ?>>
+					<?php
+					// Use FIRST Admin gravatar user ID = 1 as default.
+					if ( $use_gravatar ) {
 						$user_details = get_userdata( $gravatar_user_id );
 						$user_email   = $user_details->user_email;
 						echo get_avatar( $user_email, $gravatar_size );
 					} else {
-						echo $image_tag = '<img ' . apply_filters( 'bnscl_image_tag_alt_title', 'alt="' ) . esc_attr( $image_alt_text ) . '" src="' . esc_url( $image_url ) . '" />';
+						$image_tag = '<img '
+						             . esc_attr( apply_filters( 'bnscl_image_tag_alt_title', 'alt="' . $image_alt_text . '"' ) )
+						             . 'src="' . $image_url . '" 
+									 . />';
+						echo esc_url( $image_tag );
 					} ?>
 				</a>
 			</div><!-- .bns-logo -->
 
 		<?php } else {
 
-			if ( $logo_location == "Bottom-Right" ) {
+			if ( 'Bottom-Right' === $logo_location ) {
 				$logo_position = 'fixed-bottom-right';
-			} elseif ( $logo_location == "Bottom-Left" ) {
+			} elseif ( 'Bottom-Left' === $logo_location ) {
 				$logo_position = 'fixed-bottom-left';
-			} elseif ( $logo_location == "Top-Right" ) {
+			} elseif ( 'Top-Right' === $logo_location ) {
 				$logo_position = 'fixed-top-right';
-			} elseif ( $logo_location == "Top-Left" ) {
+			} elseif ( 'Top-Left' === $logo_location ) {
 				$logo_position = 'fixed-top-left';
+			} else {
+				$logo_position = 'fixed-bottom-right';
 			} ?>
 
-			<div class="bns-logo <?php echo $logo_position; ?>">
-				<a <?php if ( $new_window ) {
-					echo 'target="_blank"';
-				} ?> href="<?php echo esc_url( $image_link ); ?>">
-					<!-- Use FIRST Admin gravatar user ID = 1 as default -->
-					<?php if ( $use_gravatar ) {
+			<div class='bns-logo <?php echo esc_attr( $logo_position ); ?>'>
+				<a href="<?php echo esc_url( $image_link ); ?>" <?php if ( $new_window ) { echo 'target="_blank"';} ?>>
+					<?php
+					// Use FIRST Admin gravatar user ID = 1 as default.
+					if ( $use_gravatar ) {
 						$user_details = get_userdata( $gravatar_user_id );
 						$user_email   = $user_details->user_email;
 						echo get_avatar( $user_email, $gravatar_size );
 					} else {
-						echo $image_tag = '<img ' . apply_filters( 'bnscl_image_tag_alt_title', 'alt="' ) . esc_attr( $image_alt_text ) . '"  src="' . esc_url( $image_url ) . '" />';
+						$image_tag = '<img '
+						             . esc_attr( apply_filters( 'bnscl_image_tag_alt_title', 'alt="' . $image_alt_text . '"' ) )
+									 . 'src="' . $image_url . '" 
+									 . />';
+						echo esc_url( $image_tag );
 					} ?>
 				</a>
 			</div><!-- .bns-logo -->
 		<?php }
-		/** End - Display image based on widget settings */
 
-		/** After widget (defined by themes) */
+		// Only add $after_widget is not use.
 		if ( ! $widget_plugin ) {
-			/** @var $after_widget   string - defined by theme */
 			echo $after_widget;
 		}
 
@@ -328,8 +339,8 @@ class BNS_Corner_Logo extends WP_Widget {
 	/**
 	 * Override update method of class WP_Widget
 	 *
-	 * @param   $new_instance
-	 * @param   $old_instance
+	 * @param array $new_instance values for new widget.
+	 * @param array $old_instance values from old instance.
 	 *
 	 * @return  array - widget options and settings
 	 */
@@ -359,12 +370,12 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @package BNS_Corner_Logo
 	 * @since   1.0
 	 *
-	 * @param   $instance
+	 * @param array $instance current values being used in widget.
 	 *
-	 * @uses    checked
-	 * @uses    get_field_id
-	 * @uses    get_field_name
-	 * @uses    selected
+	 * @see     checked
+	 * @see     get_field_id
+	 * @see     get_field_name
+	 * @see     selected
 	 *
 	 * @return  void
 	 *
@@ -385,9 +396,9 @@ class BNS_Corner_Logo extends WP_Widget {
 			'image_link'       => '',
 			'new_window'       => false,
 			'widget_plugin'    => false,
-			'logo_location'    => 'Bottom-Right'
+			'logo_location'    => 'Bottom-Right',
 		);
-		$instance = wp_parse_args( ( array ) $instance, $defaults ); ?>
+		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bns-corner-logo' ); ?></label>
@@ -395,7 +406,7 @@ class BNS_Corner_Logo extends WP_Widget {
 		</p>
 
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['use_gravatar'], true ); ?> id="<?php echo $this->get_field_id( 'use_gravatar' ); ?>" name="<?php echo $this->get_field_name( 'use_gravatar' ); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['use_gravatar'], true ); ?> id="<?php echo $this->get_field_id( 'use_gravatar' ); ?>" name="<?php echo $this->get_field_name( 'use_gravatar' ); ?>" />
 			<label for="<?php echo $this->get_field_id( 'use_gravatar' ); ?>"><?php printf( __( 'Use your %1$s image?', 'bns-corner-logo' ), '<a href="http://gravatar.com">Gravatar</a>' ); ?></label>
 		</p>
 
@@ -427,14 +438,14 @@ class BNS_Corner_Logo extends WP_Widget {
 		</p>
 
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['new_window'], true ); ?> id="<?php echo $this->get_field_id( 'new-window' ); ?>" name="<?php echo $this->get_field_name( 'new_window' ); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['new_window'], true ); ?> id="<?php echo $this->get_field_id( 'new-window' ); ?>" name="<?php echo $this->get_field_name( 'new_window' ); ?>" />
 			<label for="<?php echo $this->get_field_id( 'new_window' ); ?>"><?php _e( 'Open "URL to follow" in new window?', 'bns-corner-logo' ); ?></label>
 		</p>
 
 		<hr /><!-- Separates functionality: Widget above - plugin below -->
 
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( ( bool ) $instance['widget_plugin'], true ); ?> id="<?php echo $this->get_field_id( 'widget_plugin' ); ?>" name="<?php echo $this->get_field_name( 'widget_plugin' ); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( (bool) $instance['widget_plugin'], true ); ?> id="<?php echo $this->get_field_id( 'widget_plugin' ); ?>" name="<?php echo $this->get_field_name( 'widget_plugin' ); ?>" />
 			<label for="<?php echo $this->get_field_id( 'widget_plugin' ); ?>"><?php _e( 'Use like a Plugin?', 'bns-corner-logo' ); ?></label>
 		</p>
 
@@ -459,21 +470,12 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @package    BNS_Corner_Logo
 	 * @since      1.5
 	 *
-	 * @uses       (CONSTANT) WP_CONTENT_DIR
-	 * @uses       BNS_Corner_Logo::plugin_data
-	 * @uses       content_url
-	 * @uses       plugin_dir_url
-	 * @uses       plugin_dir_path
-	 * @uses       wp_enqueue_style
-	 *
-	 * @version    1.8.3
-	 * @date       December 30, 2013
-	 * Added functional option to place `bns-corner-logo-custom-style.css` in the `/wp-content/` folder
-	 *
-	 * @version    1.9
-	 * @date       March 31, 2015
-	 * Added calls to custom JavaScript and CSS files in the `/bns-customs/` folder
-	 * Corrected typo in custom JavaScript file name
+	 * @see        (CONSTANT) WP_CONTENT_DIR
+	 * @see        BNS_Corner_Logo::plugin_data
+	 * @see        content_url
+	 * @see        plugin_dir_url
+	 * @see        plugin_dir_path
+	 * @see        wp_enqueue_style
 	 *
 	 * @version    2.1
 	 * @date       November 27, 2015
@@ -526,11 +528,11 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @package BNS_Corner_Logo
 	 * @since   1.9
 	 *
-	 * @uses    get_transient
-	 * @uses    is_wp_error
-	 * @uses    set_transient
-	 * @uses    wp_kses_post
-	 * @uses    wp_remote_get
+	 * @see     get_transient
+	 * @see     is_wp_error
+	 * @see     set_transient
+	 * @see     wp_kses_post
+	 * @see     wp_remote_get
 	 *
 	 * @param $args
 	 *
@@ -648,8 +650,8 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @package    BNS_Corner_logo
 	 * @since      2.1
 	 *
-	 * @uses       __
-	 * @uses       plugin_basename
+	 * @see        __
+	 * @see        plugin_basename
 	 *
 	 * @param   $links
 	 * @param   $file
@@ -691,16 +693,19 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @since   2.2
 	 * @date    December 2, 2015
 	 *
-	 * @uses    BNS_Corner_Logo::plugin_data
-	 * @uses    __
-	 * @uses    wp_add_dashboard_widget
+	 * @see     BNS_Corner_Logo::plugin_data
+	 * @see     __
+	 * @see     wp_add_dashboard_widget
 	 */
 	function dashboard_widget_for_bns_corner_logo_support() {
 
 		$plugin_date = $this->plugin_data();
 
 		/**  Create a custom dashboard widget */
-		wp_add_dashboard_widget( 'bns_corner_logo_dashboard_support_widget', sprintf( __( '%1$s Support References', 'bns-corner-logo' ), $plugin_date['Name'] ), array( $this, 'dashboard_widget_support_messages_display' ) );
+		wp_add_dashboard_widget( 'bns_corner_logo_dashboard_support_widget', sprintf( __( '%1$s Support References', 'bns-corner-logo' ), $plugin_date['Name'] ), array(
+			$this,
+			'dashboard_widget_support_messages_display'
+		) );
 
 	}
 
@@ -714,8 +719,8 @@ class BNS_Corner_Logo extends WP_Widget {
 	 * @since   2.2
 	 * @date    December 2, 2015
 	 *
-	 * @uses    BNS_Corner_Logo::plugin_data
-	 * @uses    __
+	 * @see     BNS_Corner_Logo::plugin_data
+	 * @see     __
 	 */
 	function dashboard_widget_support_messages_display() {
 
@@ -757,7 +762,7 @@ class BNS_Corner_Logo extends WP_Widget {
 	/**
 	 * Register widget
 	 *
-	 * @uses    register_widget
+	 * @see    register_widget
 	 *
 	 * @return  void
 	 */
